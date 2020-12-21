@@ -1,3 +1,3 @@
 StandAdmin Demo for AntdPro
 
-please check [here](/tree/main/src/pages/StandAdminDemo)
+please check [here](https://github.com/rooseve/stand-admin-antdpro-demo/tree/main/src/pages/StandAdminDemo)

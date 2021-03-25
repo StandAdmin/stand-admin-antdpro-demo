@@ -1,4 +1,6 @@
-# StandAdmin Demo for AntdPro
+# CRUD Demos For Ant Design Pro
+
+Based on [stand-admin-antdpro](https://www.npmjs.com/package/stand-admin-antdpro)
 
 ### 标准 CRUD
 

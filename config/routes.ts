@@ -1,67 +1,86 @@
 ﻿export default [
   {
     path: '/',
-    component: '../layouts/BlankLayout',
+    component: '../layouts/BasicLayout',
     routes: [
       {
-        path: '/user',
-        component: '../layouts/UserLayout',
-        routes: [
-          {
-            name: 'login',
-            path: '/user/login',
-            component: './user/login',
-          },
-        ],
+        path: '/',
+        redirect: '/admin-demo',
+        exact: true,
       },
       {
-        path: '/',
-        component: '../layouts/SecurityLayout',
+        path: 'admin-demo',
+        name: '示例',
         routes: [
           {
-            path: '/',
-            component: '../layouts/BasicLayout',
-            authority: ['admin', 'user'],
-            routes: [
-              {
-                path: '/',
-                redirect: '/welcome',
-              },
-              {
-                path: '/welcome',
-                name: 'welcome',
-                icon: 'smile',
-                component: './Welcome',
-              },
-              {
-                path: '/admin',
-                name: 'admin',
-                icon: 'crown',
-                component: './Admin',
-                authority: ['admin'],
-                routes: [
-                  {
-                    path: '/admin/sub-page',
-                    name: 'sub-page',
-                    icon: 'smile',
-                    component: './Welcome',
-                    authority: ['admin'],
-                  },
-                ],
-              },
-              {
-                name: 'standadmin.basic',
-                icon: 'table',
-                path: '/stand-admin-demo',
-                component: './StandAdminDemo',
-              },
-              {
-                component: './404',
-              },
-            ],
+            path: '/admin-demo/',
+            redirect: '/admin-demo/base',
+            exact: true,
           },
           {
-            component: './404',
+            path: 'base',
+            name: '标准CRUD',
+            component: 'BaseDemo',
+            icon: 'branches',
+            // hideInBreadcrumb: true,
+            // order: 100,
+          },
+          {
+            path: 'select-ctrl',
+            name: '选取控件',
+            icon: 'branches',
+            component: 'SelectCtrl',
+          },
+          {
+            path: 'multi-ns',
+            name: '多实例',
+            component: 'MultiNs',
+            icon: 'branches',
+            disableAutoScrollToTop: true,
+            // hideInBreadcrumb: true,
+            // order: 100,
+          },
+          {
+            path: 'select',
+            name: '批量操作',
+            component: 'BatchAct',
+            icon: 'branches',
+          },
+          {
+            path: 'weird-list',
+            name: '异形列表',
+            component: 'WeirdList',
+            icon: 'branches',
+          },
+          {
+            path: 'weird-query',
+            name: '异形查询',
+            component: 'WeirdQuery',
+            icon: 'branches',
+          },
+          {
+            path: 'record-copy',
+            name: '记录复制',
+            component: 'RecordCopy',
+            icon: 'branches',
+          },
+          {
+            path: 'multi-edit',
+            name: '多编辑',
+            component: 'MultiEdit',
+            icon: 'branches',
+          },
+          {
+            path: 'row-expand',
+            name: '关联展开',
+            component: 'RowExpand',
+            icon: 'branches',
+          },
+          {
+            path: 'new-with-initvals',
+            name: '新建初始值',
+            component: 'NewWithInitvals',
+            icon: 'branches',
           },
         ],
       },

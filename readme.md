@@ -41,3 +41,11 @@ Based on [stand-admin-antdpro](https://www.npmjs.com/package/stand-admin-antdpro
 ### 新建初始值
 
 ![新建初始值](./snapshots/demo-new-with-initvals.jpg?raw=true)
+
+### 数据转换-新建/编辑
+
+![数据转换-新建/编辑](./snapshots/demo-data-convert-newedit.jpg?raw=true)
+
+### 数据转换-查询
+
+![数据转换-查询](./snapshots/demo-data-convert-search.jpg?raw=true)

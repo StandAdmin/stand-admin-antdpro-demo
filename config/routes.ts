@@ -82,6 +82,18 @@
             component: 'NewWithInitvals',
             icon: 'branches',
           },
+          {
+            path: 'data-convert-newedit',
+            name: '数据转换-新建/编辑',
+            component: 'DataConvertNewEdit',
+            icon: 'branches',
+          },
+          {
+            path: 'data-convert-search',
+            name: '数据转换-查询',
+            component: 'DataConvertSearch',
+            icon: 'branches',
+          },
         ],
       },
     ],

@@ -60,7 +60,7 @@ export default (props) => {
       footer={null}
     >
       <Form {...formProps} {...formItemLayout}>
-        <FormItem name="updatedAt" label="修改时间">
+        <FormItem name="updatedAt" label="修改时间" extra="日期控件返回的moment数据需要转换">
           <DatePicker showTime allowClear />
         </FormItem>
 

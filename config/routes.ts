@@ -94,6 +94,18 @@
             component: 'DataConvertSearch',
             icon: 'branches',
           },
+          {
+            path: 'row-action',
+            name: '行操作',
+            component: 'RowAction',
+            icon: 'branches',
+          },
+          {
+            path: 'big-context',
+            name: 'ContextAPI',
+            component: 'ContextAPI',
+            icon: 'branches',
+          },
         ],
       },
     ],

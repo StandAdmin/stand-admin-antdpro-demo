@@ -58,12 +58,12 @@ async function updateRecord(record) {
 }
 
 async function customAction(params) {
-  const { id } = params;
+  const { isErrReq } = params;
 
   return packResp(
     'customAction',
     params,
-    id % 2
+    isErrReq
       ? {
           success: false,
           message: `请求已收到：${JSON.stringify(params, null, 2)}`,

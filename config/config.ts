@@ -7,7 +7,7 @@ import routes from './routes';
 const { REACT_APP_ENV } = process.env;
 
 export default defineConfig({
-  hash: true,
+  hash: false,
   antd: {},
   dva: {
     hmr: true,
@@ -17,9 +17,7 @@ export default defineConfig({
     type: 'browser',
   },
   locale: false,
-  dynamicImport: {
-    loading: '@/components/PageLoading/index',
-  },
+  dynamicImport: false,
   targets: {
     ie: 11,
   },

@@ -106,6 +106,18 @@
             component: 'ContextAPI',
             icon: 'branches',
           },
+          {
+            path: 'column-sort',
+            name: '列排序',
+            component: 'ColumnSort',
+            icon: 'branches',
+          },
+          {
+            path: 'column-filter',
+            name: '列筛选',
+            component: 'ColumnFilter',
+            icon: 'branches',
+          },
         ],
       },
     ],

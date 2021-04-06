@@ -1,15 +1,51 @@
 import { listRecords, getAutoId, buildRecord, matchRecord, packResp } from './mock';
 
+const recordKeys = Object.keys(buildRecord(0));
+
 async function searchRecords(params) {
-  const { pageNum: origPageNum = 1, pageSize: origPageSize = 10, ...searchParams } = params;
+  const {
+    pageNum: origPageNum = 1,
+    pageSize: origPageSize = 10,
+    sortByField,
+    sortByOrder,
+    ...searchParams
+  } = params;
 
   const pageNum = parseInt(origPageNum, 10);
 
   const pageSize = parseInt(origPageSize, 10);
 
-  const allResults = listRecords.filter((item) => {
-    return !Object.keys(searchParams).some((f) => !matchRecord(item, f, searchParams[f]));
-  });
+  const allResults = listRecords
+    // 处置相等 a=v
+    .filter((item) => {
+      return !Object.keys(searchParams)
+        .filter((k) => recordKeys.indexOf(k) >= 0)
+        .some((f) => !matchRecord(item, f, searchParams[f]));
+    })
+    // 处置范围 _in_a=v1,v2
+    .filter((item) => {
+      return !Object.keys(searchParams)
+        .filter((k) => k.indexOf('_in_') === 0)
+        .some((f) => {
+          const field = f.substr('_in_'.length);
+          const inVals = (searchParams[f] || '').split(',');
+
+          return !inVals.some((val) => matchRecord(item, field, val));
+        });
+    });
+
+  if (sortByField && sortByOrder) {
+    allResults.sort((a, b) => {
+      const aVal = a[sortByField];
+      const bVal = b[sortByField];
+
+      if (aVal === bVal) {
+        return 0;
+      }
+
+      return (sortByOrder === 'ascend' ? 1 : -1) * (aVal < bVal ? -1 : 1);
+    });
+  }
 
   return packResp(
     'searchRecords',

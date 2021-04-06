@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { StandListCtrlHoc } from 'stand-admin-antdpro';
+import { StandListCtrlHoc, defineCommonHocParams, useStandContext } from 'stand-admin-antdpro';
 import { Dropdown, Button, Menu, Badge, notification } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { configModel, recordModel } from '../BaseDemo/main';
@@ -9,13 +9,16 @@ import RecordForm from '../BaseDemo/RecordForm';
 import SearchForm from '../BaseDemo/SearchForm';
 
 export const BatchOp = (props) => {
+  const { getRecordId } = useStandContext();
+
   const { checkedList } = props;
 
   const batchOpMenu = (
     <Menu
       onClick={(e) => {
         notification.info({
-          message: `批量动作：${e.key}`,
+          message: `动作：${e.key}`,
+          description: `选中：${checkedList.map((record) => getRecordId(record)).join(', ')}`,
         });
       }}
     >
@@ -41,15 +44,15 @@ function MainComp(props) {
 
   return (
     <>
-      <div style={{ float: 'right' }}>
-        <BatchOp {...props} />
-      </div>
-
       {/* 查询 */}
       <SearchForm {...props} />
 
-      {/* 结果列表 */}
-      <List {...props} />
+      <div style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute', zIndex: 100, top: 5, right: 24 }}>
+          <BatchOp {...props} />
+        </div>
+        <List {...props} />
+      </div>
 
       {/* 新建/编辑 */}
       <RecordForm {...props} />
@@ -57,10 +60,10 @@ function MainComp(props) {
   );
 }
 
-const hocParams = {
+const hocParams = defineCommonHocParams({
   recordModel,
   configModel,
-};
+});
 
 // 默认的主组件
 export default StandListCtrlHoc({ ...hocParams, isModalMode: false })(MainComp);

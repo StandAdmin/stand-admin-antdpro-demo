@@ -14,7 +14,7 @@ export default defineConfig({
     skipModelValidate: true,
   },
   history: {
-    type: 'browser',
+    type: 'hash',
   },
   locale: false,
   dynamicImport: false,

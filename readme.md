@@ -1,6 +1,7 @@
 # CRUD Demo For Ant Design Pro
 
-Based on [stand-admin-antdpro](https://www.npmjs.com/package/stand-admin-antdpro)
+### [Live Demo](https://rooseve.github.io/#/admin-demo/base) 
+
 
 ### 标准 CRUD
 

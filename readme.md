@@ -1,7 +1,8 @@
-# CRUD Demo For Ant Design Pro
+# StandAdmin Demo For Ant Design Pro
 
-### [Live Demo](https://rooseve.github.io/#/admin-demo/base) 
+### [Live Demo](https://rooseve.github.io/#/admin-demo/base)
 
+StandAdmin is CRUD framework work perfectly with Antd Pro.
 
 ### 标准 CRUD
 

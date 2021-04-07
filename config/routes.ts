@@ -11,6 +11,7 @@
       {
         path: 'admin-demo',
         name: '示例',
+        icon: 'appstore',
         routes: [
           {
             path: '/admin-demo/',

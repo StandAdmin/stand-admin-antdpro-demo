@@ -40,14 +40,17 @@ const hocParams = {
       searchRecords: (params) => {
         const origSearchRecords = recordModel.modelOpts.searchRecords;
 
-        const { myFilter } = params;
+        const { myFilter, ...restParams } = params;
 
         const matchFilterItem = myFilterList.find((item) => item.value === myFilter);
 
-        return origSearchRecords(matchFilterItem ? matchFilterItem.params : {});
+        return origSearchRecords({
+          ...(matchFilterItem ? matchFilterItem.params : {}),
+          ...restParams,
+        });
       },
     }),
-    'weird-query',
+    'weird-query'
   ),
   configModel,
   defaultSearchParams: {},

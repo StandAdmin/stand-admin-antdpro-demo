@@ -119,6 +119,18 @@
             component: 'ColumnFilter',
             icon: 'branches',
           },
+          {
+            path: 'record-details',
+            name: '记录详情',
+            component: 'RecordDetails',
+            icon: 'branches',
+          },
+          {
+            path: 'overide-hocparams',
+            name: '覆盖Hoc参数',
+            component: 'OverideHocParams',
+            icon: 'branches',
+          },
         ],
       },
     ],

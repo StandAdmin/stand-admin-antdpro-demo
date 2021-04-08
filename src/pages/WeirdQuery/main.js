@@ -18,9 +18,6 @@ function MainComp(props) {
 
   return (
     <>
-      <p>
-        异形查询指的是查询界面和接口参数差异巨大，此种场景推荐的做法是：对查询接口做一个转换包装
-      </p>
       {/* 查询 */}
       <SearchForm {...props} {...{ myFilterList }} />
 

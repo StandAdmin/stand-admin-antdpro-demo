@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import {
+  defineCommonHocParams,
   StandListCtrlHoc,
   StandRecordsHoc,
   openLog,
@@ -21,9 +22,10 @@ if (env === 'local') {
   openLog();
 }
 
-// 创建ConfigModel
+// 创建 ConfigModel，通常存放一些全局的枚举值或者其他数据
 export const configModel = buildStandConfigModelPkg({
-  StoreNs: 'DemoConfig2',
+  // Dva的Namespace，全局唯一
+  StoreNs: 'DemoConfig',
   StoreNsTitle: 'Demo配置',
   getConfig: [
     // 异步函数
@@ -47,12 +49,15 @@ export const configModel = buildStandConfigModelPkg({
   ],
 });
 
-// 创建RecordModel
+// 创建RecordModel，配置一些基础属性（名称，id、name字段），以及 CRUD services
 export const recordModel = buildStandRecordModelPkg({
-  StoreNs: 'DemoRule2',
+  // Dva的Namespace，全局唯一
+  StoreNs: 'DemoRecord',
   StoreNsTitle: '规则',
   idFieldName: 'id',
   nameFieldName: 'name',
+
+  /** CRUD services */
   searchRecords,
   getRecord,
   addRecord,
@@ -90,7 +95,7 @@ function MainComp(props) {
   );
 }
 
-const hocParams = {
+const hocParams = defineCommonHocParams({
   recordModel,
   configModel,
 
@@ -98,7 +103,8 @@ const hocParams = {
    * 默认的查询参数
    */
   defaultSearchParams: {},
-};
+  passContextAsProps: false,
+});
 
 // 默认的主组件
 export default StandRecordsHoc(hocParams)(MainComp);
@@ -111,7 +117,7 @@ export const SelectCtrl = StandListCtrlHoc({
 
 const DynamicCompCache = {};
 
-// 动态主组件，支持不同的数据空间
+// 动态主组件，支持动态的数据空间
 export const getDynamicComp = (namespace) => {
   if (!DynamicCompCache[namespace]) {
     DynamicCompCache[namespace] = StandRecordsHoc({

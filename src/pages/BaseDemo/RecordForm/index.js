@@ -19,25 +19,32 @@ const formItemLayout = {
 };
 
 export default (props) => {
-  const { config, context, formProps, modalProps } = useStandUpsertForm({
+  const {
+    isUpdate,
+    config,
+    context,
+    formProps,
+    modalProps,
+    renderFormHistroyTrigger,
+  } = useStandUpsertForm({
     ...getOptsForStandUpsertForm(props, {
       // 默认值
       defaultValues: {
         status: 1,
       },
     }),
-    // 接口数据（通常来自于列表接口）转换为表单数据
-    recordToValues: (record) => {
-      return {
-        ...record,
-      };
-    },
-    // 表单数据转为接口数据（后续会传递给 addRecord/updateRecord）
-    recordFromValues: (values) => {
-      return {
-        ...values,
-      };
-    },
+    // // 接口数据（通常来自于列表接口）转换为表单数据
+    // recordToValues: (record) => {
+    //   return {
+    //     ...record,
+    //   };
+    // },
+    // // 表单数据转为接口数据（后续会传递给 addRecord/updateRecord）
+    // recordFromValues: (values) => {
+    //   return {
+    //     ...values,
+    //   };
+    // },
   });
 
   const { getActionCount } = context;
@@ -51,6 +58,7 @@ export default (props) => {
       width="70%"
       footer={null}
     >
+      <div style={{ float: 'right' }}>{renderFormHistroyTrigger()}</div>
       <Form {...formProps} {...formItemLayout}>
         <FormItem name="name" label="名称" rules={[{ required: true }]}>
           <Input allowClear />
@@ -87,7 +95,7 @@ export default (props) => {
             htmlType="submit"
             loading={isSubmitting}
           >
-            提交
+            {isUpdate ? '编辑' : '创建'}
           </Button>
         </FormItem>
       </Form>

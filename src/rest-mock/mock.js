@@ -31,14 +31,15 @@ function randNum(min, max) {
 }
 
 function buildRecord(i) {
+  const now = Date.now();
   return {
     id: i,
     name: `名称${i}`,
     desc: `描述${i}`,
     status: Math.floor(Math.random() * 10) % 4,
     relIds: [randNum(10, 100), randNum(10, 100)],
-    updatedAt: new Date() - i * 1000 * 60,
-    createdAt: new Date() - i * 1000 * 60,
+    updatedAt: now - i * 1000 * 60,
+    createdAt: now - i * 1000 * 60,
     progress: randNum(10, 100),
   };
 }

@@ -80,7 +80,7 @@ async function getRecord(params) {
 async function updateRecord(record) {
   const matchItem = listRecords.find((item) => matchRecord(item, 'id', record.id));
 
-  Object.assign(matchItem, record);
+  Object.assign(matchItem, { ...record, updatedAt: Date.now() });
 
   return packResp(
     'updateRecord',

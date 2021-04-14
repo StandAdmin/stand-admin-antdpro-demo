@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { StandRecordsHoc, defineCommonHocParams } from 'stand-admin-antdpro';
 import { configModel, recordModel } from '../BaseDemo/main';
 

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { defineCommonHocParams, useStandSearchForm, StandRecordInfoHoc } from 'stand-admin-antdpro';
 
 import { Input, Form } from 'antd';

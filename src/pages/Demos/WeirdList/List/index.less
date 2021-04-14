@@ -1,0 +1,46 @@
+@import '~antd/lib/style/themes/default.less';
+
+.rankList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rankItem {
+  margin: 0 8px 8px 0;
+  white-space: nowrap;
+
+  .rankTag {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 130px;
+    padding: 0 8px;
+    font-size: 13px;
+    line-height: 30px;
+    background-color: #f8f8f8;
+    border-radius: 1px;
+
+    &:global(.ant-tag-checkable-checked) {
+      background-color: @primary-color;
+    }
+  }
+
+  .rankName {
+    margin: 0 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .action {
+    cursor: pointer;
+    opacity: 0.2;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .dragHandler {
+    font-size: 110%;
+    cursor: move;
+  }
+}

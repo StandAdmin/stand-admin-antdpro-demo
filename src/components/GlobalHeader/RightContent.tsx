@@ -10,7 +10,7 @@ export interface GlobalHeaderRightProps extends Partial<ConnectProps>, Partial<P
   theme?: ProSettings['navTheme'] | 'realDark';
 }
 
-const GlobalHeaderRight: React.SFC<GlobalHeaderRightProps> = (props) => {
+const GlobalHeaderRight: React.FunctionComponent<GlobalHeaderRightProps> = (props) => {
   const { theme, layout } = props;
   let className = styles.right;
 
@@ -37,7 +37,7 @@ const GlobalHeaderRight: React.SFC<GlobalHeaderRightProps> = (props) => {
           color: 'inherit',
         }}
         target="_blank"
-        href="https://github.com/rooseve/stand-admin-antdpro-demo/tree/main/src/pages"
+        href="https://github.com/rooseve/stand-admin-antdpro-demo/tree/main/src/pages/Demos"
         rel="noopener noreferrer"
         className={styles.action}
       >

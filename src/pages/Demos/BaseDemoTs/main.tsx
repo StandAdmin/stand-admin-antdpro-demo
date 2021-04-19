@@ -6,8 +6,14 @@ import {
   openLog,
   buildStandRecordModelPkg,
   buildStandConfigModelPkg,
-  // useStandContext,
+  useStandContext,
 } from 'stand-admin-antdpro';
+
+import type {
+  IRecord,
+  TMainComPropsWithRecordsHocInject,
+  TMainComPropsWithListCtrlHocInject,
+} from './interface';
 
 import { env } from '@/configs/env';
 import { useWhyDidYouUpdate } from 'ahooks';
@@ -24,9 +30,6 @@ if (env === 'local') {
 
 // 创建 ConfigModel，通常存放一些全局的枚举值或者其他数据
 export const configModel = buildStandConfigModelPkg({
-  // Dva的Namespace，全局唯一
-  StoreNs: 'DemoConfig',
-  StoreNsTitle: 'Demo配置',
   getConfig: [
     // 异步函数
     async () => {
@@ -50,7 +53,7 @@ export const configModel = buildStandConfigModelPkg({
 });
 
 // 创建RecordModel，配置一些基础属性（名称，id、name字段），以及 CRUD services
-export const recordModel = buildStandRecordModelPkg({
+export const recordModel = buildStandRecordModelPkg<IRecord>({
   // Dva的Namespace，全局唯一
   StoreNs: 'DemoRecord',
   StoreNsTitle: '规则',
@@ -65,12 +68,12 @@ export const recordModel = buildStandRecordModelPkg({
   deleteRecord,
 });
 
-function MainComp(props) {
-  // const { config } = useStandContext();
+const MainComp: React.FC<TMainComPropsWithRecordsHocInject | TMainComPropsWithListCtrlHocInject> = (
+  props
+) => {
+  const context = useStandContext<IRecord>();
 
-  useWhyDidYouUpdate('useWhyDidYouUpdateComponent', { ...props });
-
-  // console.log(props);
+  useWhyDidYouUpdate('useWhyDidYouUpdateComponent', { ...props, ...context });
 
   const { hideSearchForm } = props;
 
@@ -86,7 +89,7 @@ function MainComp(props) {
       <RecordForm {...props} />
     </>
   );
-}
+};
 
 const hocParams = defineCommonHocParams({
   recordModel,
@@ -99,21 +102,23 @@ const hocParams = defineCommonHocParams({
   /**
    * 是否把StandContext的属性放入props中
    */
-  // receiveContextAsProps: false,
+  receiveContextAsProps: false,
 });
 
 // 默认的主组件
-export default StandRecordsHoc(hocParams)(MainComp);
+export default StandRecordsHoc<IRecord, TMainComPropsWithRecordsHocInject>(hocParams)(MainComp);
 
 // 选取控件
-export const SelectCtrl = StandListCtrlHoc(hocParams)(MainComp);
+export const SelectCtrl = StandListCtrlHoc<IRecord, TMainComPropsWithListCtrlHocInject>(hocParams)(
+  MainComp
+);
 
 const DynamicCompCache = {};
 
 // 动态主组件，支持动态的数据空间
-export const getDynamicComp = (namespace) => {
+export const getDynamicComp = (namespace: string) => {
   if (!DynamicCompCache[namespace]) {
-    DynamicCompCache[namespace] = StandRecordsHoc({
+    DynamicCompCache[namespace] = StandRecordsHoc<IRecord, TMainComPropsWithRecordsHocInject>({
       ...hocParams,
       makeRecordModelPkgDynamic: namespace,
     })(MainComp);

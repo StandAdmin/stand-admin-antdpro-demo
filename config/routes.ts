@@ -26,6 +26,14 @@
             // order: 100,
           },
           {
+            path: 'base-ts',
+            name: '标准CRUD(TS版)',
+            component: 'Demos/BaseDemoTs',
+            icon: 'branches',
+            // hideInBreadcrumb: true,
+            hideInMenu: true,
+          },
+          {
             path: 'select-ctrl',
             name: '选取控件',
             icon: 'branches',

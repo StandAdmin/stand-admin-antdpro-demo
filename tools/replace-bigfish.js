@@ -11,7 +11,7 @@ const replaceMap = {
 };
 
 const options = {
-  files: ['src/**/*.js', 'src/**/*.ts'],
+  files: ['src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'],
   from: [],
   to: [],
 };

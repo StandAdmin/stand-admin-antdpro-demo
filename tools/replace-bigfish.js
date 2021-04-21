@@ -23,24 +23,20 @@ Object.keys(replaceMap).forEach((key) => {
   options.to.push(replaceMap[key]);
 });
 
-replace(options)
-  .then((results) => {
-    console.log('Replacement results:', results);
-  })
-  .catch((error) => {
-    console.error('Error occurred:', error);
-  });
-
-replace({
-  files: ['src/pages/**/service.js', 'src/pages/**/service.ts'],
-  from: (file) => {
-    return fs.readFileSync(file, { encoding: 'utf8' });
-  },
-  to: `export * from '../../../rest-mock/service';`,
-})
-  .then((results) => {
-    console.log('Replacement results:', results);
-  })
+Promise.all([
+  replace(options),
+  replace({
+    files: ['src/pages/**/service.js', 'src/pages/**/service.ts'],
+    from: (file) => {
+      // console.log(file);
+      return fs.readFileSync(file, { encoding: 'utf8' });
+    },
+    to: `export * from '../../../rest-mock/service';`,
+  }),
+])
+  // .then((results) => {
+  //   console.log('Replacement results:', results);
+  // })
   .catch((error) => {
     console.error('Error occurred:', error);
   });

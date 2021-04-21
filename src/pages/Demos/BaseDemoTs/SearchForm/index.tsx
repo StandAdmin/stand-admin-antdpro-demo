@@ -2,9 +2,15 @@ import React from 'react';
 import { Input, InputNumber, Form, Select, Button } from 'antd';
 import { useStandSearchForm, getOptsForStandSearchForm, standUtils } from 'stand-admin-antdpro';
 import { SearchOutlined, UndoOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import type {
+  IRecord,
+  TMainComPropsWithRecordsHocInject,
+  TMainComPropsWithListCtrlHocInject,
+} from '../interface';
+
 import styles from './index.less';
 
-export default (props: any) => {
+export default (props: TMainComPropsWithRecordsHocInject | TMainComPropsWithListCtrlHocInject) => {
   const {
     config,
     FormItem,
@@ -12,7 +18,7 @@ export default (props: any) => {
     formProps,
     resetForm,
     renderFormHistroyTrigger,
-  } = useStandSearchForm({
+  } = useStandSearchForm<IRecord>({
     ...getOptsForStandSearchForm(props),
   });
 

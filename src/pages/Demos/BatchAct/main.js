@@ -1,5 +1,5 @@
 import React from 'react';
-import { StandListCtrlHoc, useStandContext, defineCommonHocParams } from 'stand-admin-antdpro';
+import { StandRecordsHoc, useStandContext, defineCommonHocParams } from 'stand-admin-antdpro';
 import { Dropdown, Button, Menu, Badge, notification } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { configModel, recordModel } from '../BaseDemo/main';
@@ -8,10 +8,8 @@ import List from '../BaseDemo/List';
 import RecordForm from '../BaseDemo/RecordForm';
 import SearchForm from '../BaseDemo/SearchForm';
 
-export const BatchOp = (props) => {
-  const { getRecordId } = useStandContext();
-
-  const { checkedList } = props;
+export const BatchOp = () => {
+  const { getRecordId, checkedList } = useStandContext();
 
   const batchOpMenu = (
     <Menu
@@ -63,7 +61,9 @@ function MainComp(props) {
 const hocParams = defineCommonHocParams({
   recordModel,
   configModel,
+  receiveContextAsProps: false,
+  listRowSelectionSupport: true,
 });
 
 // 默认的主组件
-export default StandListCtrlHoc({ ...hocParams, isModalMode: false })(MainComp);
+export default StandRecordsHoc(hocParams)(MainComp);

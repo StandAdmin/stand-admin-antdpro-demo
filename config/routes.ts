@@ -49,7 +49,7 @@
             // order: 100,
           },
           {
-            path: 'select',
+            path: 'batch-act',
             name: '批量操作',
             component: 'Demos/BatchAct',
             icon: 'branches',

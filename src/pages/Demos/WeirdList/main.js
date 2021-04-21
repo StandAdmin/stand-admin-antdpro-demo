@@ -1,5 +1,5 @@
 import React from 'react';
-import { StandListCtrlHoc, defineCommonHocParams } from 'stand-admin-antdpro';
+import { StandRecordsHoc, defineCommonHocParams } from 'stand-admin-antdpro';
 
 import { configModel, recordModel } from '../BaseDemo/main';
 
@@ -32,7 +32,8 @@ const hocParams = defineCommonHocParams({
   recordModel,
   configModel,
   defaultSearchParams: { pageSize: 40 },
+  receiveContextAsProps: false,
 });
 
 // 默认的主组件
-export default StandListCtrlHoc({ ...hocParams, isModalMode: false })(MainComp);
+export default StandRecordsHoc(hocParams)(MainComp);

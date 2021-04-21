@@ -68,8 +68,8 @@ export const recordModel = buildStandRecordModelPkg<IRecord>({
   deleteRecord,
 });
 
-const MainComp: React.FC<TMainComPropsWithRecordsHocInject | TMainComPropsWithListCtrlHocInject> = (
-  props
+const MainComp = (
+  props: TMainComPropsWithRecordsHocInject | TMainComPropsWithListCtrlHocInject
 ) => {
   const context = useStandContext<IRecord>();
 

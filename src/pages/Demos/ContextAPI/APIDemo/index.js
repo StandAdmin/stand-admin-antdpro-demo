@@ -26,6 +26,8 @@ export default () => {
     nameFieldName,
     StoreNsTitle,
     callService,
+    getRecord,
+    getRecordMapByIdList,
   } = useStandContext();
 
   const { records, pagination, searchParams } = storeRef;
@@ -56,7 +58,7 @@ export default () => {
       },
     },
     { label: '弹出新建', action: () => showEmptyRecordForm() },
-    { label: '查询[ID=10]', action: () => goSearch({ id: 10 }) },
+    { label: '查询[name=10]', action: () => goSearch({ name: '10' }) },
     { label: '查询刷新', action: () => reloadSearch() },
     { label: `查询中: ${searchLoading}`, action: () => {} },
     {
@@ -102,6 +104,22 @@ export default () => {
           serviceTitle: `自定义动作`,
           serviceFunction: customAction,
           serviceParams: [{ cmd: 'Just say hi', isErrReq: true }],
+        });
+      },
+    },
+    {
+      label: `获取记录[id=11]`,
+      action: () => {
+        getRecord({ [idFieldName]: 11 }).then((record) => {
+          inspectObject(record);
+        });
+      },
+    },
+    {
+      label: `获取记录[id=12,13]`,
+      action: () => {
+        getRecordMapByIdList([12, 13]).then((record) => {
+          inspectObject(record);
         });
       },
     },

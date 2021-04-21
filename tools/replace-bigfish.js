@@ -1,8 +1,10 @@
+const fs = require('fs');
 const replace = require('replace-in-file');
 
 const replaceMap = {
   '@alipay/bigfish/antd': 'antd',
   '@alipay/bigfish/react': 'react',
+  '@alipay/bigfish/hooks': 'ahooks',
   '@alipay/bigfish/util/': '',
   '@ali/stand-admin': 'stand-admin-antdpro',
   '@/page/': '@/pages/',
@@ -11,7 +13,7 @@ const replaceMap = {
 };
 
 const options = {
-  files: ['src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'],
+  files: ['src/pages/**/*.js', 'src/pages/**/*.ts', 'src/pages/**/*.tsx'],
   from: [],
   to: [],
 };
@@ -22,6 +24,20 @@ Object.keys(replaceMap).forEach((key) => {
 });
 
 replace(options)
+  .then((results) => {
+    console.log('Replacement results:', results);
+  })
+  .catch((error) => {
+    console.error('Error occurred:', error);
+  });
+
+replace({
+  files: ['src/pages/**/service.js', 'src/pages/**/service.ts'],
+  from: (file) => {
+    return fs.readFileSync(file, { encoding: 'utf8' });
+  },
+  to: `export * from '../../../rest-mock/service';`,
+})
   .then((results) => {
     console.log('Replacement results:', results);
   })

@@ -2,7 +2,11 @@ import React from 'react';
 import { Form, Modal, Button, Input, Radio } from 'antd';
 import { useStandUpsertForm, getOptsForStandUpsertForm, standUtils } from 'stand-admin-antdpro';
 import { SelectCtrl as BaseDemoSelectCtrl } from '@/pages/Demos/BaseDemo/main';
-
+import type {
+  IRecord,
+  TMainComPropsWithRecordsHocInject,
+  TMainComPropsWithListCtrlHocInject,
+} from '../interface';
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
@@ -17,7 +21,7 @@ const formItemLayout = {
   },
 };
 
-export default (props: any) => {
+export default (props: TMainComPropsWithRecordsHocInject | TMainComPropsWithListCtrlHocInject) => {
   const {
     isUpdate,
     config,
@@ -25,7 +29,7 @@ export default (props: any) => {
     formProps,
     modalProps,
     renderFormHistroyTrigger,
-  } = useStandUpsertForm({
+  } = useStandUpsertForm<IRecord>({
     ...getOptsForStandUpsertForm(props, {
       // 默认值
       defaultValues: {

@@ -3,11 +3,20 @@ import moment from 'moment';
 import { Popconfirm } from 'antd';
 import { useStandTableList } from 'stand-admin-antdpro';
 import { customAction } from '../service';
+import type {
+  IRecord,
+  TMainComPropsWithRecordsHocInject,
+  TMainComPropsWithListCtrlHocInject,
+} from '../interface';
 
-export default (props: any) => {
-  const { config, context, showRecordForm, tableListStyles, standRender } = useStandTableList(
-    props
-  );
+export default (props: TMainComPropsWithRecordsHocInject | TMainComPropsWithListCtrlHocInject) => {
+  const {
+    config,
+    context,
+    showRecordForm,
+    tableListStyles,
+    standRender,
+  } = useStandTableList<IRecord>(props);
 
   const {
     deleteRecord,
@@ -18,7 +27,7 @@ export default (props: any) => {
     loadAndShowRecordForm,
   } = context;
 
-  const callCustomAction = (record: any, action: string) => {
+  const callCustomAction = (record: IRecord, action: string) => {
     return callService({
       serviceTitle: '自定义动作',
       serviceFunction: customAction,

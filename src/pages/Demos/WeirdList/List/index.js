@@ -41,9 +41,7 @@ const ListItem = ({ record, extraProps }) => {
 export default (props) => {
   const { records, context, showRecordForm } = useStandTableList(props);
 
-  const { renderPagination, getRecordId } = context;
-
-  const { checkedList, toggleChecked } = props;
+  const { renderPagination, getRecordId, checkedList, toggleChecked } = context;
 
   return (
     <>

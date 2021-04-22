@@ -14,6 +14,12 @@ export default (props) => {
     renderFormHistroyTrigger,
   } = useStandSearchForm({
     ...getOptsForStandSearchForm(props),
+    // searchParamsFromValues: (values) => {
+    //   return { ...values };
+    // },
+    // searchParamsToValues: (params) => {
+    //   return { ...params };
+    // },
   });
 
   const { searchLoading, showEmptyRecordForm } = context;

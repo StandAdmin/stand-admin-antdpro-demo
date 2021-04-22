@@ -10,7 +10,6 @@ import {
 } from 'stand-admin-antdpro';
 
 import { env } from '@/configs/env';
-import { useWhyDidYouUpdate } from 'ahooks';
 
 import List from './List';
 import RecordForm from './RecordForm';
@@ -24,9 +23,6 @@ if (env === 'local') {
 
 // 创建 ConfigModel，通常存放一些全局的枚举值或者其他数据
 export const configModel = buildStandConfigModelPkg({
-  // Dva的Namespace，全局唯一
-  StoreNs: 'DemoConfig',
-  StoreNsTitle: 'Demo配置',
   getConfig: [
     // 异步函数
     async () => {
@@ -49,11 +45,13 @@ export const configModel = buildStandConfigModelPkg({
   ],
 });
 
-// 创建RecordModel，配置一些基础属性（名称，id、name字段），以及 CRUD services
+// 创建RecordModel，配置一些基础信息（名称，id、name字段），以及 CRUD services
 export const recordModel = buildStandRecordModelPkg({
   // Dva的Namespace，全局唯一
   StoreNs: 'DemoRecord',
   StoreNsTitle: '规则',
+
+  // 基础信息
   idFieldName: 'id',
   nameFieldName: 'name',
 
@@ -67,10 +65,6 @@ export const recordModel = buildStandRecordModelPkg({
 
 function MainComp(props) {
   // const { config } = useStandContext();
-
-  useWhyDidYouUpdate('useWhyDidYouUpdateComponent', { ...props });
-
-  // console.log(props);
 
   const { hideSearchForm } = props;
 
@@ -97,9 +91,16 @@ const hocParams = defineCommonHocParams({
   defaultSearchParams: {},
 
   /**
+   * 强制指定的参数
+   */
+  specSearchParams: { source: 'demo' },
+
+  /**
    * 是否把StandContext的属性放入props中
    */
-  // receiveContextAsProps: false,
+  receiveContextAsProps: false,
+
+  // receiveHocParamsAsProps: false,
 });
 
 // 默认的主组件

@@ -2,11 +2,8 @@ import React from 'react';
 import { Form, Modal, Button, Input, Radio } from 'antd';
 import { useStandUpsertForm, getOptsForStandUpsertForm, standUtils } from 'stand-admin-antdpro';
 import { SelectCtrl as BaseDemoSelectCtrl } from '@/pages/Demos/BaseDemo/main';
-import type {
-  IRecord,
-  TMainComPropsWithRecordsHocInject,
-  TMainComPropsWithListCtrlHocInject,
-} from '../interface';
+import type { IRecord, TMainComPropsWithStandHocInject } from '../interface';
+
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
@@ -21,7 +18,7 @@ const formItemLayout = {
   },
 };
 
-export default (props: TMainComPropsWithRecordsHocInject | TMainComPropsWithListCtrlHocInject) => {
+export default (props: TMainComPropsWithStandHocInject) => {
   const {
     isUpdate,
     config,
@@ -55,12 +52,7 @@ export default (props: TMainComPropsWithRecordsHocInject | TMainComPropsWithList
   const isSubmitting = getActionCount() > 0;
 
   return (
-    <Modal
-      // forceRender
-      {...modalProps}
-      width="70%"
-      footer={null}
-    >
+    <Modal {...modalProps} width="70%" footer={null}>
       <div style={{ float: 'right' }}>{renderFormHistroyTrigger()}</div>
       <Form {...formProps} {...formItemLayout}>
         <FormItem name="name" label="名称" rules={[{ required: true }]}>

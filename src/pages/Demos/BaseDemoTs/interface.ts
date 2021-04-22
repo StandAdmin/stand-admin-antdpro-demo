@@ -17,3 +17,7 @@ export interface IMainComProps {
 export type TMainComPropsWithRecordsHocInject = IMainComProps & IRecordsHocInjectProps<IRecord>;
 
 export type TMainComPropsWithListCtrlHocInject = IMainComProps & IListCtrlHocInjectProps<IRecord>;
+
+export type TMainComPropsWithStandHocInject =
+  | TMainComPropsWithRecordsHocInject
+  | TMainComPropsWithListCtrlHocInject;

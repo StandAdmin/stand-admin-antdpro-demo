@@ -11,6 +11,7 @@ import {
 
 import type {
   IRecord,
+  TMainComPropsWithStandHocInject,
   TMainComPropsWithRecordsHocInject,
   TMainComPropsWithListCtrlHocInject,
 } from './interface';
@@ -68,9 +69,7 @@ export const recordModel = buildStandRecordModelPkg<IRecord>({
   deleteRecord,
 });
 
-const MainComp = (
-  props: TMainComPropsWithRecordsHocInject | TMainComPropsWithListCtrlHocInject
-) => {
+const MainComp = (props: TMainComPropsWithStandHocInject) => {
   const context = useStandContext<IRecord>();
 
   useWhyDidYouUpdate('useWhyDidYouUpdateComponent', { ...props, ...context });
@@ -106,7 +105,7 @@ const hocParams = defineCommonHocParams({
 });
 
 // 默认的主组件
-export default StandRecordsHoc<IRecord, TMainComPropsWithRecordsHocInject>(hocParams)(MainComp);
+export default StandRecordsHoc<IRecord, TMainComPropsWithStandHocInject>(hocParams)(MainComp);
 
 // 选取控件
 export const SelectCtrl = StandListCtrlHoc<IRecord, TMainComPropsWithListCtrlHocInject>(hocParams)(

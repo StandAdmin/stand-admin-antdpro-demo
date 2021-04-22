@@ -3,13 +3,9 @@ import moment from 'moment';
 import { Popconfirm } from 'antd';
 import { useStandTableList } from 'stand-admin-antdpro';
 import { customAction } from '../service';
-import type {
-  IRecord,
-  TMainComPropsWithRecordsHocInject,
-  TMainComPropsWithListCtrlHocInject,
-} from '../interface';
+import type { IRecord, TMainComPropsWithStandHocInject } from '../interface';
 
-export default (props: TMainComPropsWithRecordsHocInject | TMainComPropsWithListCtrlHocInject) => {
+export default (props: TMainComPropsWithStandHocInject) => {
   const {
     config,
     context,

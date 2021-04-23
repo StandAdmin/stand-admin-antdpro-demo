@@ -19,6 +19,8 @@ export default defineConfig({
   locale: false,
   dynamicImport: false,
   dynamicImportSyntax: {},
+  runtimePublicPath: true,
+  publicPath: process.env.NODE_ENV === 'production' ? '/stand-admin-antdpro-demo/' : '/',
   targets: {
     ie: 11,
   },

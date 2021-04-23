@@ -1,8 +1,8 @@
 {
-  "/umi.css": "/stand-admin-antdpro-demo/umi.css",
-  "/umi.js": "/stand-admin-antdpro-demo/umi.js",
-  "/vendors~antd_pro_table.css": "/stand-admin-antdpro-demo/vendors~antd_pro_table.chunk.css",
-  "/vendors~antd_pro_table.js": "/stand-admin-antdpro-demo/vendors~antd_pro_table.js",
-  "/favicon.ico": "/stand-admin-antdpro-demo/favicon.ico",
-  "/index.html": "/stand-admin-antdpro-demo/index.html"
+  "/umi.css": "/umi.css",
+  "/umi.js": "/umi.js",
+  "/vendors~antd_pro_table.css": "/vendors~antd_pro_table.chunk.css",
+  "/vendors~antd_pro_table.js": "/vendors~antd_pro_table.js",
+  "/favicon.ico": "/favicon.ico",
+  "/index.html": "/index.html"
 }

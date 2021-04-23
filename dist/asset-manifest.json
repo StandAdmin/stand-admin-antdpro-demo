@@ -1,6 +1,8 @@
 {
   "/umi.css": "/umi.css",
   "/umi.js": "/umi.js",
+  "/vendors~antd_pro_table.css": "/vendors~antd_pro_table.chunk.css",
+  "/vendors~antd_pro_table.js": "/vendors~antd_pro_table.js",
   "/favicon.ico": "/favicon.ico",
   "/index.html": "/index.html"
 }

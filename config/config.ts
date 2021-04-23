@@ -18,6 +18,7 @@ export default defineConfig({
   },
   locale: false,
   dynamicImport: false,
+  dynamicImportSyntax: {},
   targets: {
     ie: 11,
   },

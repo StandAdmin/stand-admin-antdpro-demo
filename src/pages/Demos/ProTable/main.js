@@ -1,11 +1,21 @@
 import React from 'react';
+import { dynamic } from 'umi';
 import { StandRecordsHoc, defineCommonHocParams, useStandContext } from 'stand-admin-antdpro';
 import moment from 'moment';
 import { Popconfirm } from 'antd';
-import ProTable from '@ant-design/pro-table';
 import { configModel, recordModel } from '../BaseDemo/main';
 
 import RecordForm from '../BaseDemo/RecordForm';
+
+const ProTable = dynamic({
+  async loader() {
+    const OrigProTable = await import(
+      /* webpackChunkName: "antd_pro_table" */ '@ant-design/pro-table'
+    );
+
+    return OrigProTable;
+  },
+});
 
 function MainComp(props) {
   const {

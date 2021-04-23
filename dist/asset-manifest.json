@@ -1,8 +1,10 @@
 {
+  "/vendors~antd_pro_table~external_antd_charts.js": "/vendors~antd_pro_table~external_antd_charts.js",
   "/umi.css": "/umi.css",
   "/umi.js": "/umi.js",
   "/vendors~antd_pro_table.css": "/vendors~antd_pro_table.chunk.css",
   "/vendors~antd_pro_table.js": "/vendors~antd_pro_table.js",
+  "/vendors~external_antd_charts.js": "/vendors~external_antd_charts.js",
   "/favicon.ico": "/favicon.ico",
   "/index.html": "/index.html"
 }

@@ -61,6 +61,12 @@
             icon: 'branches',
           },
           {
+            path: 'charts',
+            name: '图表',
+            component: 'Demos/Charts',
+            icon: 'branches',
+          },
+          {
             path: 'weird-query',
             name: '异形查询',
             component: 'Demos/WeirdQuery',

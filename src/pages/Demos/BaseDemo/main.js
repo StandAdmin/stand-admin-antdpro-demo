@@ -61,6 +61,22 @@ export const recordModel = buildStandRecordModelPkg({
   addRecord,
   updateRecord,
   deleteRecord,
+
+  /**
+   *  接口字段映射
+   */
+  // fldsPathInResp: {
+  //   pageNum: 'data.pageNum',
+  //   pageSize: 'data.pageSize',
+  //   total: 'data.total',
+  //   list: 'data.list',
+  //   errorMsg: ['message', 'msg', 'resultMsg'],
+  //   permissionApplyUrl: ['permissionApplyUrl'],
+  // },
+  // searchParamsMap: {
+  //   pageNum: 'pageNum',
+  //   pageSize: 'pageSize',
+  // },
 });
 
 function MainComp(props) {
@@ -98,9 +114,7 @@ const hocParams = defineCommonHocParams({
   /**
    * 是否把StandContext的属性放入props中
    */
-  receiveContextAsProps: false,
-
-  // receiveHocParamsAsProps: false,
+  receiveContextAsProps: [],
 });
 
 // 默认的主组件

@@ -28,6 +28,9 @@ export default () => {
     callService,
     getRecord,
     getRecordMapByIdList,
+    toggleChecked,
+    checkedList,
+    clearChecked,
   } = useStandContext();
 
   const { records, pagination, searchParams } = storeRef;
@@ -121,6 +124,30 @@ export default () => {
         getRecordMapByIdList([12, 13]).then((record) => {
           inspectObject(record);
         });
+      },
+    },
+    {
+      label: `选中首行`,
+      action: () => {
+        toggleChecked(records[0], true);
+      },
+    },
+    {
+      label: `选中本页`,
+      action: () => {
+        toggleChecked(records, true);
+      },
+    },
+    {
+      label: `清空选中`,
+      action: () => {
+        clearChecked();
+      },
+    },
+    {
+      label: `已选取`,
+      action: () => {
+        inspectObject(checkedList);
       },
     },
   ];

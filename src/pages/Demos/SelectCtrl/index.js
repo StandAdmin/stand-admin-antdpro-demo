@@ -11,6 +11,10 @@ export default () => {
 
   return (
     <PageHeaderWrapper>
+      <p>
+        中后台存在很多关联（类似表的外键）操作，此时可以使用 StandListCtrlHoc
+        把整套CRUD变成一个选取控件
+      </p>
       <Card title="普通">
         <BaseDemoSelectCtrl
           specSearchParams={{
@@ -68,6 +72,35 @@ export default () => {
             </Button>
           </Form.Item>
         </Form>
+      </Card>
+      <Card title="自定义Trigger">
+        <BaseDemoSelectCtrl.IdSelectCtrl
+          resetSearchParamsOnModalShow
+          modalTrigger={({ showModal, context }) => {
+            const { checkedList, getRecordId, getRecordName } = context;
+
+            return (
+              <div>
+                <Button type="primary" onClick={showModal}>
+                  选取
+                </Button>
+                <div>
+                  已选：{checkedList.length}
+                  {checkedList.length > 0 && (
+                    <ul>
+                      {checkedList.map((record) => (
+                        <li key={getRecordId(record)}>
+                          {getRecordId(record)}: {getRecordName(record)}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            );
+          }}
+          onChange={(value) => console.log(`ID`, value)}
+        />
       </Card>
     </PageHeaderWrapper>
   );

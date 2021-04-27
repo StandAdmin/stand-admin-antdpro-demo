@@ -14,6 +14,8 @@ const MainC = getDynamicComp('NS-C');
 
 export default (props) => (
   <PageHeaderWrapper>
+    <p>多个实例的数据空间需要隔离（参考getDynamicComp）。</p>
+    <p>需要URL参数同步的话，可以设置urlParamsNs，避免参数冲突</p>
     <Card title="实例A( syncParamsToUrl={false} )">
       <MainA
         {...props}
@@ -25,7 +27,6 @@ export default (props) => (
         defaultSearchParams={{ pageSize: 3 }}
       />
     </Card>
-
     <Card title={`实例B( urlParamsNs="B" )`}>
       <MainB
         {...props}
@@ -37,7 +38,6 @@ export default (props) => (
         defaultSearchParams={{ pageSize: 3 }}
       />
     </Card>
-
     <Card title={`实例C( urlParamsNs="C" )`}>
       <MainC
         {...props}

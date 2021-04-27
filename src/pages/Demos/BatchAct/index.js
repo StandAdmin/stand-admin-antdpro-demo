@@ -5,6 +5,7 @@ import Main from './main';
 
 export default (props) => (
   <PageHeaderWrapper>
+    <p>设置 listRowSelectionSupport:true</p>
     <Main {...props} />
   </PageHeaderWrapper>
 );

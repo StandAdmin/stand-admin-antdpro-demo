@@ -31,6 +31,7 @@ const hocParams = defineCommonHocParams({
   recordModel,
   configModel,
   defaultSearchParams: { pageSize: 2 },
+  listRowSelectionSupport: true,
 });
 
 // 默认的主组件

@@ -5,6 +5,7 @@ import Main from './main';
 
 export default (props) => (
   <PageHeaderWrapper>
+    <p>The Big StandContext</p>
     <Main {...props} />
   </PageHeaderWrapper>
 );

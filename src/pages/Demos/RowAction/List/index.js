@@ -2,11 +2,13 @@ import React from 'react';
 // import moment from 'moment';
 import { Modal, message, Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
-import { useStandTableList } from 'stand-admin-antdpro';
+import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro';
 import { customAction } from '@/pages/Demos/BaseDemo/service';
 
 export default (props) => {
-  const { config, context, tableListStyles, standRender } = useStandTableList(props);
+  const { config, context, tableListStyles, standRender } = useStandTableList({
+    ...getOptsForStandTableList(props),
+  });
 
   const { idFieldName, getRecordId, getRecordName, callService } = context;
 
@@ -69,6 +71,16 @@ export default (props) => {
                 <Tooltip title="不触发列表更新">
                   <InfoCircleOutlined />
                 </Tooltip>
+              </a>
+            </li>
+
+            <li>
+              <a
+                onClick={() => {
+                  callCustomAction(record, 'ActD', { successMsg: false, shouldRefresh: false });
+                }}
+              >
+                静默请求
               </a>
             </li>
 

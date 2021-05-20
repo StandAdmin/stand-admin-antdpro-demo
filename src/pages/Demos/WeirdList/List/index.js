@@ -2,7 +2,7 @@ import React from 'react';
 import { Tag } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 
-import { useStandTableList } from 'stand-admin-antdpro';
+import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro';
 
 import styles from './index.less';
 
@@ -39,7 +39,9 @@ const ListItem = ({ record, extraProps }) => {
 };
 
 export default (props) => {
-  const { records, context, showRecordForm } = useStandTableList(props);
+  const { records, context, showRecordForm } = useStandTableList({
+    ...getOptsForStandTableList(props),
+  });
 
   const { renderPagination, getRecordId, checkedList, toggleChecked } = context;
 

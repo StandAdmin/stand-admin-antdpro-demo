@@ -1,13 +1,13 @@
 import React from 'react';
 import moment from 'moment';
 import { Popconfirm } from 'antd';
-import { useStandTableList } from 'stand-admin-antdpro';
+import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro';
 import { customAction } from '../service';
 
 export default (props) => {
-  const { config, context, showRecordForm, tableListStyles, standRender } = useStandTableList(
-    props
-  );
+  const { config, context, showRecordForm, tableListStyles, standRender } = useStandTableList({
+    ...getOptsForStandTableList(props),
+  });
 
   const {
     deleteRecord,

@@ -10,6 +10,7 @@ module.exports = {
     jasmine: true,
   },
   rules: {
+    'import/extensions': 0,
     'arrow-body-style': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js'] }],
     'react/jsx-wrap-multilines': 0,
@@ -26,5 +27,10 @@ module.exports = {
   },
   settings: {
     polyfills: ['fetch', 'promises', 'url'],
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStandTableList } from 'stand-admin-antdpro';
+import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro';
 
 import { dynamic } from 'umi';
 
@@ -17,7 +17,9 @@ export const Line = dynamic({
 });
 
 export default (props) => {
-  const { config, records } = useStandTableList(props);
+  const { config, records } = useStandTableList({
+    ...getOptsForStandTableList(props),
+  });
 
   return (
     <Line

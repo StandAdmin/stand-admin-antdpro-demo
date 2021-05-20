@@ -1,10 +1,12 @@
 import React from 'react';
-import { useStandTableList } from 'stand-admin-antdpro';
+import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro';
 import { LinkOutlined } from '@ant-design/icons';
 import { getDynamicComp, SelectCtrl } from '@/pages/Demos/BaseDemo/main';
 
 export default (props) => {
-  const { config, standRender } = useStandTableList(props);
+  const { config, standRender } = useStandTableList({
+    ...getOptsForStandTableList(props),
+  });
 
   const columns = [
     {

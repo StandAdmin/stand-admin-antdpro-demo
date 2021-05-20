@@ -1,6 +1,6 @@
 import React from 'react';
 import { StandRecordsHoc, useStandContext, defineCommonHocParams } from 'stand-admin-antdpro';
-import { Dropdown, Button, Menu, Badge, notification } from 'antd';
+import { Dropdown, Button, Spin, Menu, Badge, notification } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { configModel, recordModel } from '../BaseDemo/main';
 
@@ -8,16 +8,32 @@ import List from '../BaseDemo/List';
 import RecordForm from '../BaseDemo/RecordForm';
 import SearchForm from '../BaseDemo/SearchForm';
 
+const batchActionCountKey = 'batchAct';
+
 export const BatchOp = () => {
-  const { getRecordId, checkedList } = useStandContext();
+  const {
+    getRecordId,
+    checkedList,
+    clearChecked,
+    increaseActionCount,
+    decreaseActionCount,
+    getActionCount,
+  } = useStandContext();
 
   const batchOpMenu = (
     <Menu
       onClick={(e) => {
-        notification.info({
-          message: `动作：${e.key}`,
-          description: `选中：${checkedList.map((record) => getRecordId(record)).join(', ')}`,
-        });
+        increaseActionCount(batchActionCountKey);
+
+        setTimeout(() => {
+          decreaseActionCount(batchActionCountKey);
+
+          notification.info({
+            message: `动作：${e.key}`,
+            description: `选中：${checkedList.map((record) => getRecordId(record)).join(', ')}`,
+          });
+          clearChecked();
+        }, 2000);
       }}
     >
       <Menu.Item key="act1">操作1</Menu.Item>
@@ -26,14 +42,20 @@ export const BatchOp = () => {
   );
 
   return (
-    <Badge count={checkedList.length}>
-      <Dropdown overlay={batchOpMenu} disabled={checkedList.length === 0}>
-        <Button>
-          批量操作
-          <DownOutlined />
-        </Button>
-      </Dropdown>
-    </Badge>
+    <div style={{ position: 'relative' }}>
+      <Spin
+        style={{ position: 'absolute', zIndex: 1000, top: 0, left: -24 }}
+        spinning={getActionCount(batchActionCountKey) > 0}
+      />
+      <Badge count={checkedList.length}>
+        <Dropdown overlay={batchOpMenu} disabled={checkedList.length === 0}>
+          <Button>
+            批量操作
+            <DownOutlined />
+          </Button>
+        </Dropdown>
+      </Badge>
+    </div>
   );
 };
 

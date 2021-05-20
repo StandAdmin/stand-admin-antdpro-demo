@@ -9,15 +9,14 @@ import {
   useStandContext,
 } from 'stand-admin-antdpro';
 
+import { env } from '@/configs/env';
+import { useWhyDidYouUpdate } from 'ahooks';
 import type {
   IRecord,
   TMainComPropsWithStandHocInject,
   TMainComPropsWithRecordsHocInject,
   TMainComPropsWithListCtrlHocInject,
 } from './interface';
-
-import { env } from '@/configs/env';
-import { useWhyDidYouUpdate } from 'ahooks';
 
 import List from './List';
 import RecordForm from './RecordForm';
@@ -108,9 +107,8 @@ const hocParams = defineCommonHocParams({
 export default StandRecordsHoc<IRecord, TMainComPropsWithStandHocInject>(hocParams)(MainComp);
 
 // 选取控件
-export const SelectCtrl = StandListCtrlHoc<IRecord, TMainComPropsWithListCtrlHocInject>(hocParams)(
-  MainComp
-);
+export const SelectCtrl =
+  StandListCtrlHoc<IRecord, TMainComPropsWithListCtrlHocInject>(hocParams)(MainComp);
 
 const DynamicCompCache = {};
 

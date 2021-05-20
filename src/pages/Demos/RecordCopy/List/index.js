@@ -1,9 +1,11 @@
 import React from 'react';
 
-import { useStandTableList } from 'stand-admin-antdpro';
+import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro';
 
 export default (props) => {
-  const { showRecordForm, tableListStyles, standRender } = useStandTableList(props);
+  const { showRecordForm, tableListStyles, standRender } = useStandTableList({
+    ...getOptsForStandTableList(props),
+  });
 
   const columns = [
     {

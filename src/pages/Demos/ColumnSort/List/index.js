@@ -1,9 +1,11 @@
 // import React from 'react';
 import moment from 'moment';
-import { useStandTableList } from 'stand-admin-antdpro';
+import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro';
 
 export default (props) => {
-  const { context, config, standRender } = useStandTableList(props);
+  const { context, config, standRender } = useStandTableList({
+    ...getOptsForStandTableList(props),
+  });
 
   const {
     storeRef: { searchParams },

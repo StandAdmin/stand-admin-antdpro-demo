@@ -19,33 +19,27 @@ const formItemLayout = {
 };
 
 export default (props: TMainComPropsWithStandHocInject) => {
-  const {
-    isUpdate,
-    config,
-    context,
-    formProps,
-    modalProps,
-    renderFormHistroyTrigger,
-  } = useStandUpsertForm<IRecord>({
-    ...getOptsForStandUpsertForm(props, {
-      // 默认值
-      defaultValues: {
-        status: 1,
-      },
-    }),
-    // // 接口数据（通常来自于列表接口）转换为表单数据
-    // recordToValues: (record) => {
-    //   return {
-    //     ...record,
-    //   };
-    // },
-    // // 表单数据转为接口数据（后续会传递给 addRecord/updateRecord）
-    // recordFromValues: (values) => {
-    //   return {
-    //     ...values,
-    //   };
-    // },
-  });
+  const { isUpdate, config, context, formProps, modalProps, renderFormHistroyTrigger } =
+    useStandUpsertForm<IRecord>({
+      ...getOptsForStandUpsertForm(props, {
+        // 默认值
+        defaultValues: {
+          status: 1,
+        },
+      }),
+      // // 接口数据（通常来自于列表接口）转换为表单数据
+      // recordToValues: (record) => {
+      //   return {
+      //     ...record,
+      //   };
+      // },
+      // // 表单数据转为接口数据（后续会传递给 addRecord/updateRecord）
+      // recordFromValues: (values) => {
+      //   return {
+      //     ...values,
+      //   };
+      // },
+    });
 
   const { getActionCount } = context;
 
@@ -90,7 +84,7 @@ export default (props: TMainComPropsWithStandHocInject) => {
             htmlType="submit"
             loading={isSubmitting}
           >
-            {isUpdate ? '编辑' : '创建'}
+            {isUpdate ? '提交' : '创建'}
           </Button>
         </FormItem>
       </Form>

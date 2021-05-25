@@ -1,5 +1,5 @@
 import React from 'react';
-import { StandRecordsHoc, useStandContext, defineCommonHocParams } from 'stand-admin-antdpro';
+import { StandContextHoc, useStandContext, defineContextHocParams } from 'stand-admin-antdpro';
 import RealMain, { configModel } from '../BaseDemo/main';
 
 function MainWrapper(props) {
@@ -11,8 +11,8 @@ function MainWrapper(props) {
   return <RealMain {...props} defaultSearchParams={{ status: defaultStatus }} />;
 }
 
-const hocParams = defineCommonHocParams({
+const hocParams = defineContextHocParams({
   configModel,
 });
 
-export default StandRecordsHoc(hocParams)(MainWrapper);
+export default StandContextHoc(hocParams)(MainWrapper);

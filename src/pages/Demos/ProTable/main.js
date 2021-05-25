@@ -1,6 +1,6 @@
 import React from 'react';
 import { dynamic } from 'umi';
-import { StandRecordsHoc, defineCommonHocParams, useStandContext } from 'stand-admin-antdpro';
+import { StandContextHoc, defineContextHocParams, useStandContext } from 'stand-admin-antdpro';
 import moment from 'moment';
 import { Popconfirm } from 'antd';
 import { configModel, recordModel } from '../BaseDemo/main';
@@ -123,7 +123,7 @@ function MainComp(props) {
   );
 }
 
-const hocParams = defineCommonHocParams({
+const hocParams = defineContextHocParams({
   recordModel,
   configModel,
   // ProTable 目前不支持受控模式，即完全指定 dataSource和params，同时避免 request 对 dataSource的影响
@@ -131,4 +131,4 @@ const hocParams = defineCommonHocParams({
 });
 
 // 默认的主组件
-export default StandRecordsHoc(hocParams)(MainComp);
+export default StandContextHoc(hocParams)(MainComp);

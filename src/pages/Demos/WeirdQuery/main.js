@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  StandRecordsHoc,
-  defineCommonHocParams,
+  StandContextHoc,
+  defineContextHocParams,
   getDynamicModelPkg,
   buildStandRecordModelPkg,
 } from 'stand-admin-antdpro';
@@ -35,7 +35,7 @@ function MainComp(props) {
   );
 }
 
-const hocParams = defineCommonHocParams({
+const hocParams = defineContextHocParams({
   recordModel: getDynamicModelPkg(
     buildStandRecordModelPkg({
       ...recordModel.modelOpts,
@@ -58,4 +58,4 @@ const hocParams = defineCommonHocParams({
   defaultSearchParams: {},
 });
 
-export default StandRecordsHoc(hocParams)(MainComp);
+export default StandContextHoc(hocParams)(MainComp);

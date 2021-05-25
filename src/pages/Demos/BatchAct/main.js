@@ -1,5 +1,5 @@
 import React from 'react';
-import { StandRecordsHoc, useStandContext, defineCommonHocParams } from 'stand-admin-antdpro';
+import { StandContextHoc, useStandContext, defineContextHocParams } from 'stand-admin-antdpro';
 import { Dropdown, Button, Spin, Menu, Badge, notification } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { configModel, recordModel } from '../BaseDemo/main';
@@ -80,12 +80,11 @@ function MainComp(props) {
   );
 }
 
-const hocParams = defineCommonHocParams({
+const hocParams = defineContextHocParams({
   recordModel,
   configModel,
-  receiveContextAsProps: false,
   listRowSelectionSupport: true,
 });
 
 // 默认的主组件
-export default StandRecordsHoc(hocParams)(MainComp);
+export default StandContextHoc(hocParams)(MainComp);

@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  defineCommonHocParams,
-  StandListCtrlHoc,
-  StandRecordsHoc,
+  defineContextHocParams,
+  StandSelectCtrlHoc,
+  StandContextHoc,
   openLog,
   buildStandRecordModelPkg,
   buildStandConfigModelPkg,
@@ -98,7 +98,7 @@ function MainComp(props) {
   );
 }
 
-const hocParams = defineCommonHocParams({
+const hocParams = defineContextHocParams({
   recordModel,
   configModel,
   /**
@@ -110,25 +110,20 @@ const hocParams = defineCommonHocParams({
    * 强制指定的参数
    */
   specSearchParams: { source: 'demo' },
-
-  /**
-   * 是否把StandContext的属性放入props中
-   */
-  receiveContextAsProps: [],
 });
 
 // 默认的主组件
-export default StandRecordsHoc(hocParams)(MainComp);
+export default StandContextHoc(hocParams)(MainComp);
 
 // 选取控件
-export const SelectCtrl = StandListCtrlHoc(hocParams)(MainComp);
+export const SelectCtrl = StandSelectCtrlHoc(hocParams)(MainComp);
 
 const DynamicCompCache = {};
 
 // 动态主组件，支持动态的数据空间
 export const getDynamicComp = (namespace) => {
   if (!DynamicCompCache[namespace]) {
-    DynamicCompCache[namespace] = StandRecordsHoc({
+    DynamicCompCache[namespace] = StandContextHoc({
       ...hocParams,
       makeRecordModelPkgDynamic: namespace,
     })(MainComp);

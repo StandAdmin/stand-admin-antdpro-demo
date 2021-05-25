@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  defineCommonHocParams,
+  defineContextHocParams,
   useStandSearchForm,
-  StandRecordsHoc,
+  StandContextHoc,
   buildStandRecordModelPkg,
 } from 'stand-admin-antdpro';
 
@@ -56,7 +56,7 @@ function MainComp() {
   );
 }
 
-const hocParams = defineCommonHocParams({
+const hocParams = defineContextHocParams({
   recordModel,
   /**
    * 默认的查询参数
@@ -65,4 +65,4 @@ const hocParams = defineCommonHocParams({
 });
 
 // 默认的主组件
-export default StandRecordsHoc(hocParams)(MainComp);
+export default StandContextHoc(hocParams)(MainComp);

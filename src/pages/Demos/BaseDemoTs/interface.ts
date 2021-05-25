@@ -1,4 +1,4 @@
-import type { IRecordsHocInjectProps, IListCtrlHocInjectProps } from 'stand-admin-antdpro';
+import type { IContextHocInjectProps, ISelectCtrlHocInjectProps } from 'stand-admin-antdpro';
 
 export interface IRecord {
   id: number;
@@ -14,9 +14,9 @@ export interface IMainComProps {
   hideSearchForm?: boolean;
 }
 
-export type TMainComPropsWithRecordsHocInject = IMainComProps & IRecordsHocInjectProps<IRecord>;
+export type TMainComPropsWithRecordsHocInject = IMainComProps & IContextHocInjectProps<IRecord>;
 
-export type TMainComPropsWithListCtrlHocInject = IMainComProps & IListCtrlHocInjectProps<IRecord>;
+export type TMainComPropsWithListCtrlHocInject = IMainComProps & ISelectCtrlHocInjectProps<IRecord>;
 
 export type TMainComPropsWithStandHocInject =
   | TMainComPropsWithRecordsHocInject

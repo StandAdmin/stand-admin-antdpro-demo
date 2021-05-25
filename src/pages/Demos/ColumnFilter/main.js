@@ -1,5 +1,5 @@
 import React from 'react';
-import { StandRecordsHoc, defineCommonHocParams } from 'stand-admin-antdpro';
+import { StandContextHoc, defineContextHocParams } from 'stand-admin-antdpro';
 import { configModel, recordModel } from '../BaseDemo/main';
 
 import List from './List';
@@ -18,7 +18,7 @@ function MainComp(props) {
   );
 }
 
-const hocParams = defineCommonHocParams({
+const hocParams = defineContextHocParams({
   recordModel,
   configModel,
 
@@ -38,4 +38,4 @@ const hocParams = defineCommonHocParams({
 });
 
 // 默认的主组件
-export default StandRecordsHoc(hocParams)(MainComp);
+export default StandContextHoc(hocParams)(MainComp);

@@ -1,22 +1,25 @@
 import React from 'react';
+
+import { useWhyDidYouUpdate } from 'ahooks';
+
 import {
-  defineCommonHocParams,
-  StandListCtrlHoc,
-  StandRecordsHoc,
+  defineContextHocParams,
+  StandSelectCtrlHoc,
+  StandContextHoc,
   openLog,
   buildStandRecordModelPkg,
   buildStandConfigModelPkg,
   useStandContext,
 } from 'stand-admin-antdpro';
 
-import { env } from '@/configs/env';
-import { useWhyDidYouUpdate } from 'ahooks';
 import type {
   IRecord,
   TMainComPropsWithStandHocInject,
   TMainComPropsWithRecordsHocInject,
   TMainComPropsWithListCtrlHocInject,
 } from './interface';
+
+import { env } from '@/configs/env';
 
 import List from './List';
 import RecordForm from './RecordForm';
@@ -89,33 +92,28 @@ const MainComp = (props: TMainComPropsWithStandHocInject) => {
   );
 };
 
-const hocParams = defineCommonHocParams({
+const hocParams = defineContextHocParams({
   recordModel,
   configModel,
   /**
    * 默认的查询参数
    */
   defaultSearchParams: {},
-
-  /**
-   * 是否把StandContext的属性放入props中
-   */
-  receiveContextAsProps: false,
 });
 
 // 默认的主组件
-export default StandRecordsHoc<IRecord, TMainComPropsWithStandHocInject>(hocParams)(MainComp);
+export default StandContextHoc<IRecord, TMainComPropsWithStandHocInject>(hocParams)(MainComp);
 
 // 选取控件
 export const SelectCtrl =
-  StandListCtrlHoc<IRecord, TMainComPropsWithListCtrlHocInject>(hocParams)(MainComp);
+  StandSelectCtrlHoc<IRecord, TMainComPropsWithListCtrlHocInject>(hocParams)(MainComp);
 
 const DynamicCompCache = {};
 
 // 动态主组件，支持动态的数据空间
 export const getDynamicComp = (namespace: string) => {
   if (!DynamicCompCache[namespace]) {
-    DynamicCompCache[namespace] = StandRecordsHoc<IRecord, TMainComPropsWithRecordsHocInject>({
+    DynamicCompCache[namespace] = StandContextHoc<IRecord, TMainComPropsWithRecordsHocInject>({
       ...hocParams,
       makeRecordModelPkgDynamic: namespace,
     })(MainComp);

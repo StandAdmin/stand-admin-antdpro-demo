@@ -1,5 +1,9 @@
 import React from 'react';
-import { defineCommonHocParams, useStandSearchForm, StandRecordInfoHoc } from 'stand-admin-antdpro';
+import {
+  defineContextHocParams,
+  useStandSearchForm,
+  StandRecordInfoHoc,
+} from 'stand-admin-antdpro';
 
 import { Input, Form } from 'antd';
 
@@ -27,7 +31,7 @@ function MainComp(props) {
   );
 }
 
-const hocParams = defineCommonHocParams({
+const hocParams = defineContextHocParams({
   configModel,
   recordModel,
   /**

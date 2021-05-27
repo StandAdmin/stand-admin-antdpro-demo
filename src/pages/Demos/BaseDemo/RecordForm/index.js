@@ -1,7 +1,9 @@
 import React from 'react';
 import { Form, Modal, Button, Input, Radio } from 'antd';
 import { useStandUpsertForm, getOptsForStandUpsertForm, standUtils } from 'stand-admin-antdpro';
-import { SelectCtrl as BaseDemoSelectCtrl } from '@/pages/Demos/BaseDemo/main';
+
+// 这里是个循环引用
+import { SelectCtrl as BaseDemoSelectCtrl } from '../../BaseDemoIdSelectCtrl/main';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -20,12 +22,11 @@ const formItemLayout = {
 export default (props) => {
   const { isUpdate, config, context, formProps, modalProps, renderFormHistroyTrigger } =
     useStandUpsertForm({
-      ...getOptsForStandUpsertForm(props, {
-        // 默认值
-        defaultValues: {
-          status: 1,
-        },
-      }),
+      ...getOptsForStandUpsertForm(props),
+      // 默认值
+      defaultValues: {
+        status: 1,
+      },
       // // 接口数据（通常来自于列表接口）转换为表单数据
       // recordToValues: (record) => {
       //   return {

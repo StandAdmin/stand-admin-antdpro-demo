@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Modal, Button, Input, Radio } from 'antd';
 import { useStandUpsertForm, getOptsForStandUpsertForm, standUtils } from 'stand-admin-antdpro';
 
-import { SelectCtrl as BaseDemoSelectCtrl } from '../../BaseDemo/main';
+import { SelectCtrl as BaseDemoSelectCtrl } from '../../BaseDemoIdSelectCtrl/main';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;

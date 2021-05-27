@@ -26,7 +26,7 @@ Object.keys(replaceMap).forEach((key) => {
 Promise.all([
   replace(options),
   replace({
-    files: ['src/pages/**/service.js', 'src/pages/**/service.ts'],
+    files: ['src/pages/Demos/BaseDemo/service.js'],
     from: (file) => {
       // console.log(file);
       return fs.readFileSync(file, { encoding: 'utf8' });

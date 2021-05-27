@@ -3,23 +3,15 @@ import {
   defineContextHocParams,
   StandSelectCtrlHoc,
   StandContextHoc,
-  openLog,
   buildStandRecordModelPkg,
   buildStandConfigModelPkg,
   // useStandContext,
 } from 'stand-admin-antdpro';
 
-import { env } from '@/configs/env';
-
 import List from './List';
-import RecordForm from './RecordForm';
 import SearchForm from './SearchForm';
 
-import { searchRecords, getRecord, addRecord, updateRecord, deleteRecord } from './service';
-
-if (env === 'local') {
-  openLog();
-}
+import { searchRecords, getRecord } from '../BaseDemo/service';
 
 // 创建 ConfigModel，通常存放一些全局的枚举值或者其他数据
 export const configModel = buildStandConfigModelPkg({
@@ -48,7 +40,7 @@ export const configModel = buildStandConfigModelPkg({
 // 创建RecordModel，配置一些基础信息（名称，id、name字段），以及 CRUD services
 export const recordModel = buildStandRecordModelPkg({
   // Dva的Namespace，全局唯一
-  StoreNs: 'DemoRecord',
+  StoreNs: 'DemoRecordSelect',
   StoreNsTitle: '规则',
 
   // 基础信息
@@ -58,42 +50,18 @@ export const recordModel = buildStandRecordModelPkg({
   /** CRUD services */
   searchRecords,
   getRecord,
-  addRecord,
-  updateRecord,
-  deleteRecord,
-
-  /**
-   *  接口字段映射
-   */
-  // fldsPathInResp: {
-  //   pageNum: 'data.pageNum',
-  //   pageSize: 'data.pageSize',
-  //   total: 'data.total',
-  //   list: 'data.list',
-  //   errorMsg: ['message', 'msg', 'resultMsg'],
-  //   permissionApplyUrl: ['permissionApplyUrl'],
-  // },
-  // searchParamsMap: {
-  //   pageNum: 'pageNum',
-  //   pageSize: 'pageSize',
-  // },
 });
 
 function MainComp(props) {
   // const context = useStandContext();
 
-  const { hideSearchForm } = props;
-
   return (
     <>
       {/* 查询 */}
-      {!hideSearchForm && <SearchForm {...props} />}
+      {<SearchForm {...props} />}
 
       {/* 结果列表 */}
       <List {...props} />
-
-      {/* 新建/编辑 */}
-      <RecordForm {...props} />
     </>
   );
 }
@@ -117,17 +85,3 @@ export default StandContextHoc(hocParams)(MainComp);
 
 // 选取控件
 export const SelectCtrl = StandSelectCtrlHoc(hocParams)(MainComp);
-
-const DynamicCompCache = {};
-
-// 动态主组件，支持动态的数据空间
-export const getDynamicComp = (namespace) => {
-  if (!DynamicCompCache[namespace]) {
-    DynamicCompCache[namespace] = StandContextHoc({
-      ...hocParams,
-      makeRecordModelPkgDynamic: namespace,
-    })(MainComp);
-  }
-
-  return DynamicCompCache[namespace];
-};

@@ -35,25 +35,24 @@ function MainComp(props) {
   );
 }
 
+const origRecordModal = buildStandRecordModelPkg({
+  ...recordModel.modelOpts,
+  searchRecords: (params) => {
+    const origSearchRecords = recordModel.modelOpts.searchRecords;
+
+    const { myFilter, ...restParams } = params;
+
+    const matchFilterItem = myFilterList.find((item) => item.value === myFilter);
+
+    return origSearchRecords({
+      ...(matchFilterItem ? matchFilterItem.params : {}),
+      ...restParams,
+    });
+  },
+});
+
 const hocParams = defineContextHocParams({
-  recordModel: getDynamicModelPkg(
-    buildStandRecordModelPkg({
-      ...recordModel.modelOpts,
-      searchRecords: (params) => {
-        const origSearchRecords = recordModel.modelOpts.searchRecords;
-
-        const { myFilter, ...restParams } = params;
-
-        const matchFilterItem = myFilterList.find((item) => item.value === myFilter);
-
-        return origSearchRecords({
-          ...(matchFilterItem ? matchFilterItem.params : {}),
-          ...restParams,
-        });
-      },
-    }),
-    'weird-query'
-  ),
+  recordModel: getDynamicModelPkg(origRecordModal, 'weird-query'),
   configModel,
   defaultSearchParams: {},
 });

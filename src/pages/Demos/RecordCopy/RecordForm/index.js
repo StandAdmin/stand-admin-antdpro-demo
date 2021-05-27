@@ -7,7 +7,7 @@ import {
   standUtils,
 } from 'stand-admin-antdpro';
 
-import { SelectCtrl as BaseDemoSelectCtrl } from '@/pages/Demos/BaseDemo/main';
+import { SelectCtrl as BaseDemoSelectCtrl } from '../../BaseDemoIdSelectCtrl/main';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -26,51 +26,39 @@ const formItemLayout = {
 export default (props) => {
   let isCopyMode;
 
-  const {
-    nameFieldName,
-    updateRecord,
-    addRecord,
-    idFieldName,
-    getRecordName,
-    getActionCount,
-  } = useStandContext();
+  const { nameFieldName, updateRecord, addRecord, idFieldName, getRecordName, getActionCount } =
+    useStandContext();
 
-  const {
-    config,
-    formProps,
-    modalProps,
-    recordFormVisibleTag,
-    isUpdate,
-    activeRecord,
-  } = useStandUpsertForm({
-    ...getOptsForStandUpsertForm(props, {
-      // 默认值
-      defaultValues: {
-        status: 1,
+  const { config, formProps, modalProps, recordFormVisibleTag, isUpdate, activeRecord } =
+    useStandUpsertForm({
+      ...getOptsForStandUpsertForm(props, {
+        // 默认值
+        defaultValues: {
+          status: 1,
+        },
+      }),
+      recordToValues: (record) => {
+        return {
+          ...record,
+          [nameFieldName]: `${isCopyMode ? '副本-' : ''}${getRecordName(record)}`,
+        };
       },
-    }),
-    recordToValues: (record) => {
-      return {
-        ...record,
-        [nameFieldName]: `${isCopyMode ? '副本-' : ''}${getRecordName(record)}`,
-      };
-    },
-    submitValues: (values) => {
-      // 复制模式，直接调用addRecord
-      if (isCopyMode) {
+      submitValues: (values) => {
+        // 复制模式，直接调用addRecord
+        if (isCopyMode) {
+          return addRecord(values);
+        }
+
+        if (isUpdate) {
+          return updateRecord({
+            [idFieldName]: activeRecord && activeRecord[idFieldName],
+            ...values,
+          });
+        }
+
         return addRecord(values);
-      }
-
-      if (isUpdate) {
-        return updateRecord({
-          [idFieldName]: activeRecord && activeRecord[idFieldName],
-          ...values,
-        });
-      }
-
-      return addRecord(values);
-    },
-  });
+      },
+    });
 
   isCopyMode = recordFormVisibleTag && recordFormVisibleTag.isCopyMode;
 

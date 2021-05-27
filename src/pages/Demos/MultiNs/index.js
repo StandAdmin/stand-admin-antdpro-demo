@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'antd';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
-import { getDynamicComp } from '@/pages/Demos/BaseDemo/main';
+import { getDynamicComp } from '../BaseDemo/main';
 
 // import styles from './index.less';
 

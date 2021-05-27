@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Modal, Button, Input, Radio } from 'antd';
 import { useStandUpsertForm, getOptsForStandUpsertForm, standUtils } from 'stand-admin-antdpro';
-import { SelectCtrl as BaseDemoSelectCtrl } from '@/pages/Demos/BaseDemoTs/main';
+import { SelectCtrl as BaseDemoSelectCtrl } from '../../BaseDemoIdSelectCtrl/main';
 import type { IRecord, TMainComPropsWithStandHocInject } from '../interface';
 
 const FormItem = Form.Item;
@@ -21,12 +21,11 @@ const formItemLayout = {
 export default (props: TMainComPropsWithStandHocInject) => {
   const { isUpdate, config, context, formProps, modalProps, renderFormHistroyTrigger } =
     useStandUpsertForm<IRecord>({
-      ...getOptsForStandUpsertForm(props, {
-        // 默认值
-        defaultValues: {
-          status: 1,
-        },
-      }),
+      ...getOptsForStandUpsertForm(props),
+      // 默认值
+      defaultValues: {
+        status: 1,
+      },
       // // 接口数据（通常来自于列表接口）转换为表单数据
       // recordToValues: (record) => {
       //   return {

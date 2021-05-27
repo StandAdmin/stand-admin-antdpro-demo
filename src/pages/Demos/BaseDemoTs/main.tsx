@@ -1,7 +1,4 @@
 import React from 'react';
-
-import { useWhyDidYouUpdate } from 'ahooks';
-
 import {
   defineContextHocParams,
   StandSelectCtrlHoc,
@@ -20,12 +17,19 @@ import type {
 } from './interface';
 
 import { env } from '@/configs/env';
+import { useWhyDidYouUpdate } from 'ahooks';
 
 import List from './List';
 import RecordForm from './RecordForm';
 import SearchForm from './SearchForm';
 
-import { searchRecords, getRecord, addRecord, updateRecord, deleteRecord } from './service';
+import {
+  searchRecords,
+  getRecord,
+  addRecord,
+  updateRecord,
+  deleteRecord,
+} from '../BaseDemo/service';
 
 if (env === 'local') {
   openLog();

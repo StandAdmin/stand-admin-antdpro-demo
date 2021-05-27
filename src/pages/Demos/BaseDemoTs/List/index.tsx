@@ -2,12 +2,13 @@ import React from 'react';
 import moment from 'moment';
 import { Popconfirm } from 'antd';
 import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro';
-import { customAction } from '../service';
+import { customAction } from '../../BaseDemo/service';
 import type { IRecord, TMainComPropsWithStandHocInject } from '../interface';
 
 export default (props: TMainComPropsWithStandHocInject) => {
-  const { config, context, showRecordForm, tableListStyles, standRender } =
-    useStandTableList<IRecord>({ ...getOptsForStandTableList(props) });
+  const { config, context, tableListStyles, standRender } = useStandTableList<IRecord>({
+    ...getOptsForStandTableList(props),
+  });
 
   const {
     deleteRecord,
@@ -16,6 +17,7 @@ export default (props: TMainComPropsWithStandHocInject) => {
     getRecordName,
     callService,
     loadAndShowRecordForm,
+    showRecordForm,
   } = context;
 
   const callCustomAction = (record: IRecord, action: string) => {

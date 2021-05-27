@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Form, Button } from 'antd';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
-import { SelectCtrl as BaseDemoSelectCtrl } from '@/pages/Demos/BaseDemo/main';
+import { SelectCtrl as BaseDemoSelectCtrl } from '../BaseDemoIdSelectCtrl/main';
 
 export default () => {
   const onFinish = (values) => {

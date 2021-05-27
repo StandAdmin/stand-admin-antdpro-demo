@@ -5,7 +5,7 @@ import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro
 import { customAction } from '../service';
 
 export default (props) => {
-  const { config, context, showRecordForm, tableListStyles, standRender } = useStandTableList({
+  const { config, context, tableListStyles, standRender } = useStandTableList({
     ...getOptsForStandTableList(props),
   });
 
@@ -15,6 +15,7 @@ export default (props) => {
     getRecordId,
     getRecordName,
     callService,
+    showRecordForm,
     loadAndShowRecordForm,
   } = context;
 

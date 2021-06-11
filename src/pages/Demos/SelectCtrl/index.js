@@ -12,7 +12,8 @@ export default () => {
   return (
     <PageHeaderWrapper>
       <p>
-        中后台存在很多关联（类似表的外键）操作，此时可以使用 StandSelectCtrlHoc
+        中后台存在很多关联（类似表的外键）操作，此时可以使用
+        <code>StandSelectCtrlHoc</code>
         把整套CRUD变成一个选取控件
       </p>
       <Card title="普通">

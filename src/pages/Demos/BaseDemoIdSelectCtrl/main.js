@@ -11,7 +11,7 @@ import {
 import List from './List';
 import SearchForm from './SearchForm';
 
-import { searchRecords, getRecord } from '../BaseDemo/service';
+import { searchRecords, getRecord } from '@/services/restDemo';
 
 // 创建 ConfigModel，通常存放一些全局的枚举值或者其他数据
 export const configModel = buildStandConfigModelPkg({

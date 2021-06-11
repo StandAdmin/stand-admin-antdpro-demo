@@ -3,7 +3,7 @@ import React from 'react';
 import { Modal, message, Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro';
-import { customAction } from '@/pages/Demos/BaseDemo/service';
+import { customAction } from '@/services/restDemo';
 
 export default (props) => {
   const { config, context, tableListStyles, standRender } = useStandTableList({

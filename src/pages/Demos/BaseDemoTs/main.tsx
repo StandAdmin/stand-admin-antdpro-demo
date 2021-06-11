@@ -12,7 +12,6 @@ import {
 import type {
   IRecord,
   TMainComPropsWithStandHocInject,
-  TMainComPropsWithRecordsHocInject,
   TMainComPropsWithListCtrlHocInject,
 } from './interface';
 
@@ -29,7 +28,7 @@ import {
   addRecord,
   updateRecord,
   deleteRecord,
-} from '../BaseDemo/service';
+} from '@/services/restDemo';
 
 if (env === 'local') {
   openLog();
@@ -111,17 +110,3 @@ export default StandContextHoc<IRecord, TMainComPropsWithStandHocInject>(hocPara
 // 选取控件
 export const SelectCtrl =
   StandSelectCtrlHoc<IRecord, TMainComPropsWithListCtrlHocInject>(hocParams)(MainComp);
-
-const DynamicCompCache = {};
-
-// 动态主组件，支持动态的数据空间
-export const getDynamicComp = (namespace: string) => {
-  if (!DynamicCompCache[namespace]) {
-    DynamicCompCache[namespace] = StandContextHoc<IRecord, TMainComPropsWithRecordsHocInject>({
-      ...hocParams,
-      makeRecordModelPkgDynamic: namespace,
-    })(MainComp);
-  }
-
-  return DynamicCompCache[namespace];
-};

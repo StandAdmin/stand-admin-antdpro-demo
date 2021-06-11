@@ -1,4 +1,4 @@
-const fs = require('fs');
+// const fs = require('fs');
 const replace = require('replace-in-file');
 
 const replaceMap = {
@@ -26,12 +26,9 @@ Object.keys(replaceMap).forEach((key) => {
 Promise.all([
   replace(options),
   replace({
-    files: ['src/pages/Demos/BaseDemo/service.js'],
-    from: (file) => {
-      // console.log(file);
-      return fs.readFileSync(file, { encoding: 'utf8' });
-    },
-    to: `export * from '../../../rest-mock/service';`,
+    files: options.files,
+    from: /<a[\s\S]*?\.abf\.[\s\S]*?>([\s\S]*?)<\/a>/m,
+    to: (match, p1) => p1.trim(),
   }),
 ])
   // .then((results) => {

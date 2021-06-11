@@ -1,8 +1,26 @@
 import React from 'react';
+import { Link } from 'umi';
 import { Card } from 'antd';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
+import { StandContextHoc } from 'stand-admin-antdpro';
 
-import { getDynamicComp } from '../BaseDemo/main';
+import { MainComp, configModel, recordModel } from '../BaseDemo/main';
+
+const DynamicCompCache = {};
+
+// 动态主组件，支持动态的数据空间
+export const getDynamicComp = (namespace) => {
+  if (!DynamicCompCache[namespace]) {
+    DynamicCompCache[namespace] = StandContextHoc({
+      configModel,
+      recordModel,
+
+      makeRecordModelPkgDynamic: namespace,
+    })(MainComp);
+  }
+
+  return DynamicCompCache[namespace];
+};
 
 // import styles from './index.less';
 
@@ -14,8 +32,23 @@ const MainC = getDynamicComp('NS-C');
 
 export default (props) => (
   <PageHeaderWrapper>
-    <p>多个实例的数据空间需要隔离（参考getDynamicComp）。</p>
-    <p>需要URL参数同步的话，可以设置urlParamsNs，避免参数冲突</p>
+    <p>
+      共用同一个
+      <code>recordModel</code>
+      的组件实例会
+      <Link to="/admin-demo/same-ns">相互影响</Link>
+      ，原因见 这里 。 为避免此种情况，可以借助
+      <code>cloneModelPkg</code>
+      或者
+      <code>getDynamicModelPkg</code>
+      （亦可在Hoc中使用<code>makeRecordModelPkgDynamic</code>参数）复制出具备新的
+      <code>StoreNs</code>的<code>recordModel</code>
+      ，从而实现相互隔离，。
+    </p>
+    <p>
+      Url参数同步（<code>syncParamsToUrl</code>）开启的话，亦需要设置<code>urlParamsNs</code>
+      ，避免Url参数冲突
+    </p>
     <Card title="实例A( syncParamsToUrl={false} )">
       <MainA
         {...props}

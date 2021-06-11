@@ -9,10 +9,7 @@ const { REACT_APP_ENV } = process.env;
 export default defineConfig({
   hash: false,
   antd: {},
-  dva: {
-    hmr: true,
-    skipModelValidate: true,
-  },
+  dva: {},
   history: {
     type: 'hash',
   },

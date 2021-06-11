@@ -6,12 +6,14 @@ import Main from './main';
 export default (props) => (
   <PageHeaderWrapper>
     <p>
-      注：推荐优先考虑 <Link to="/admin-demo/weird-query">异形查询</Link>，即在 searchRecords
-      中做一个单向的转换。
+      查询参数和表单的转换可以借助
+      <code>useStandSearchForm</code>
+      中的
+      <code>searchParamsFromValues</code> &<code>searchParamsToValues</code>
+      ，适用于转换逻辑比较简单的场景，比如日期格式转换
     </p>
     <p>
-      这里采用的 searchParamsFromValues & searchParamsToValues
-      是一种双向转换的方式，相当于表单直接适配接口
+      复杂场景可参考 <Link to="/admin-demo/weird-query">异形查询</Link>
     </p>
     <Main {...props} />
   </PageHeaderWrapper>

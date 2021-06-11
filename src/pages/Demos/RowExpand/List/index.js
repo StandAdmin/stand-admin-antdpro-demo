@@ -1,7 +1,8 @@
 import React from 'react';
 import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro';
 import { LinkOutlined } from '@ant-design/icons';
-import { getDynamicComp, SelectCtrl } from '../../BaseDemo/main';
+import { getDynamicComp } from '../../MultiNs';
+import { SelectCtrl } from '../../BaseDemo/main';
 
 export default (props) => {
   const { config, standRender } = useStandTableList({

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStandContext } from 'stand-admin-antdpro';
 import { Card, Button, Modal } from 'antd';
-import { customAction } from '@/pages/Demos/BaseDemo/service';
+import { customAction } from '@/services/restDemo';
 import styles from './index.less';
 
 const inspectObject = (obj) => {
@@ -31,16 +31,41 @@ export default () => {
     toggleChecked,
     checkedList,
     clearChecked,
+    updateConfig,
   } = useStandContext();
 
   const { records, pagination, searchParams } = storeRef;
+
+  // console.log(storeRef);
 
   // const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
   const demoList = [
     { label: 'config信息', action: () => inspectObject(config) },
     {
-      label: 'record信息',
+      label: '更新config',
+      action: async () => {
+        const newStuff = await updateConfig([
+          () => {
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                resolve({ newEnum: { a: 1, b: 2 } });
+              }, 200);
+            });
+          },
+        ]);
+
+        Modal.info({
+          content: (
+            <span>
+              config 已更新，插入内容：<pre>{JSON.stringify(newStuff, null, 2)}</pre>
+            </span>
+          ),
+        });
+      },
+    },
+    {
+      label: 'recordModel相关信息',
       action: () => inspectObject({ idFieldName, nameFieldName, StoreNsTitle }),
     },
     { label: '当前查询参数', action: () => inspectObject(searchParams) },
@@ -102,7 +127,7 @@ export default () => {
     },
     {
       label: `请求接口`,
-      action: () => {
+      action: async () => {
         callService({
           serviceTitle: `自定义动作`,
           serviceFunction: customAction,

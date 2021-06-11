@@ -5,7 +5,12 @@ import Main from './main';
 
 export default (props) => (
   <PageHeaderWrapper>
-    <p>设置 listRowSelectionSupport:true</p>
+    <p>
+      <code>defineContextHocParams</code>
+      中设置 <code>listRowSelectionSupport:true</code>，然后通过
+      <code>context</code>
+      访问checked相关的API
+    </p>
     <Main {...props} />
   </PageHeaderWrapper>
 );

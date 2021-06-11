@@ -6,7 +6,9 @@ import Main from './main';
 export default (props) => (
   <PageHeaderWrapper>
     <p>
-      新建/编辑（useStandUpsertForm）可以通过 recordToValues、recordFromValues
+      新建/编辑可以通过
+      <code>useStandUpsertForm</code>
+      中的<code>recordToValues</code> &<code>recordFromValues</code>
       转换数据格式，比如常见的时间类型（moment/string）
     </p>
     <Main {...props} />

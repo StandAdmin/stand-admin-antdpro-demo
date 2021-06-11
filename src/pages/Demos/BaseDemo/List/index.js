@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { Popconfirm } from 'antd';
 import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro';
-import { customAction } from '../service';
+import { customAction } from '@/services/restDemo';
 
 export default (props) => {
   const { config, context, tableListStyles, standRender } = useStandTableList({

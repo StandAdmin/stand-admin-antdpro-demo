@@ -7,14 +7,7 @@ import type { IRecord, TMainComPropsWithStandHocInject } from '../interface';
 import styles from './index.less';
 
 export default (props: TMainComPropsWithStandHocInject) => {
-  const {
-    config,
-    FormItem,
-    context,
-    formProps,
-    resetForm,
-    renderFormHistroyTrigger,
-  } = useStandSearchForm<IRecord>({
+  const { config, FormItem, context, formProps, resetForm } = useStandSearchForm<IRecord>({
     ...getOptsForStandSearchForm(props),
   });
 
@@ -22,7 +15,6 @@ export default (props: TMainComPropsWithStandHocInject) => {
 
   return (
     <>
-      <div style={{ float: 'right' }}>{renderFormHistroyTrigger()}</div>
       <Form {...formProps} layout="inline" className={styles.form}>
         <FormItem name="id" label="ID">
           <InputNumber min={1} />

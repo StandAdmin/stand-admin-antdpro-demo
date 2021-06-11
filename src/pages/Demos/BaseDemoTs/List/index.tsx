@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { Popconfirm } from 'antd';
 import { useStandTableList, getOptsForStandTableList } from 'stand-admin-antdpro';
-import { customAction } from '../../BaseDemo/service';
+import { customAction } from '@/services/restDemo';
 import type { IRecord, TMainComPropsWithStandHocInject } from '../interface';
 
 export default (props: TMainComPropsWithStandHocInject) => {

@@ -8,7 +8,7 @@ import {
 
 import { Input, Form } from 'antd';
 
-import { getRecord } from '@/pages/Demos/BaseDemo/service';
+import { getRecord } from '@/services/restDemo';
 
 export const recordModel = buildStandRecordModelPkg({
   /** 利用getRecord封装searchRecords */

@@ -15,7 +15,13 @@ import List from './List';
 import RecordForm from './RecordForm';
 import SearchForm from './SearchForm';
 
-import { searchRecords, getRecord, addRecord, updateRecord, deleteRecord } from './service';
+import {
+  searchRecords,
+  getRecord,
+  addRecord,
+  updateRecord,
+  deleteRecord,
+} from '@/services/restDemo';
 
 if (env === 'local') {
   openLog();
@@ -79,7 +85,7 @@ export const recordModel = buildStandRecordModelPkg({
   // },
 });
 
-function MainComp(props) {
+export function MainComp(props) {
   // const context = useStandContext();
 
   const { hideSearchForm } = props;
@@ -117,17 +123,3 @@ export default StandContextHoc(hocParams)(MainComp);
 
 // 选取控件
 export const SelectCtrl = StandSelectCtrlHoc(hocParams)(MainComp);
-
-const DynamicCompCache = {};
-
-// 动态主组件，支持动态的数据空间
-export const getDynamicComp = (namespace) => {
-  if (!DynamicCompCache[namespace]) {
-    DynamicCompCache[namespace] = StandContextHoc({
-      ...hocParams,
-      makeRecordModelPkgDynamic: namespace,
-    })(MainComp);
-  }
-
-  return DynamicCompCache[namespace];
-};

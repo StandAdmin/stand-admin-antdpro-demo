@@ -5,14 +5,7 @@ import { SearchOutlined, UndoOutlined, PlusCircleOutlined } from '@ant-design/ic
 import styles from './index.less';
 
 export default (props) => {
-  const {
-    config,
-    FormItem,
-    context,
-    formProps,
-    resetForm,
-    renderFormHistroyTrigger,
-  } = useStandSearchForm({
+  const { config, FormItem, context, formProps, resetForm } = useStandSearchForm({
     ...getOptsForStandSearchForm(props),
     // searchParamsFromValues: (values) => {
     //   return { ...values };
@@ -26,7 +19,6 @@ export default (props) => {
 
   return (
     <>
-      <div style={{ float: 'right' }}>{renderFormHistroyTrigger()}</div>
       <Form {...formProps} layout="inline" className={styles.form}>
         <FormItem name="id" label="ID">
           <InputNumber min={1} />

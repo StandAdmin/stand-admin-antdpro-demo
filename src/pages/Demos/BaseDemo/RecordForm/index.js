@@ -1,8 +1,6 @@
 import React from 'react';
 import { Form, Modal, Button, Input, Radio } from 'antd';
 import { useStandUpsertForm, getOptsForStandUpsertForm, standUtils } from 'stand-admin-antdpro';
-
-// 这里是个循环引用
 import { SelectCtrl as BaseDemoSelectCtrl } from '../../BaseDemoIdSelectCtrl/main';
 
 const FormItem = Form.Item;

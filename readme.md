@@ -1,53 +1,57 @@
-# StandAdmin Demo For Ant Design Pro
+# Ant Design Pro
 
-### [Live Demo](https://rooseve.github.io/stand-admin-antdpro-demo/index.html)
+This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
 
-StandAdmin is CRUD framework work perfectly with Antd Pro.
+## Environment Prepare
 
-### 标准 CRUD
+Install `node_modules`:
 
-![标准CRUD](./snapshots/demo-base.jpg?raw=true)
+```bash
+npm install
+```
 
-### 选取控件
+or
 
-![选取控件](./snapshots/demo-select-ctrl.jpg?raw=true)
+```bash
+yarn
+```
 
-### 多实例
+## Provided Scripts
 
-![多实例](./snapshots/demo-multi-ns.jpg?raw=true)
+Ant Design Pro provides some useful script to help you quick start and build with web project, code style check and test.
 
-### 批量操作
+Scripts provided in `package.json`. It's safe to modify or add additional script:
 
-![批量操作](./snapshots/demo-select.jpg?raw=true)
+### Start project
 
-### 异形列表
+```bash
+npm start
+```
 
-![异形列表](./snapshots/demo-weird-list.jpg?raw=true)
+### Build project
 
-### 异形查询
+```bash
+npm run build
+```
 
-![异形查询](./snapshots/demo-weird-query.jpg?raw=true)
+### Check code style
 
-### 记录复制
+```bash
+npm run lint
+```
 
-![记录复制](./snapshots/demo-record-copy.jpg?raw=true)
+You can also use script to auto fix some lint error:
 
-### 多编辑
+```bash
+npm run lint:fix
+```
 
-![多编辑](./snapshots/demo-multi-edit.jpg?raw=true)
+### Test code
 
-### 关联展开
+```bash
+npm test
+```
 
-![关联展开](./snapshots/demo-row-expand.jpg?raw=true)
+## More
 
-### 新建初始值
-
-![新建初始值](./snapshots/demo-new-with-initvals.jpg?raw=true)
-
-### 数据转换-新建/编辑
-
-![数据转换-新建/编辑](./snapshots/demo-data-convert-newedit.jpg?raw=true)
-
-### 数据转换-查询
-
-![数据转换-查询](./snapshots/demo-data-convert-search.jpg?raw=true)
+You can view full document on our [official website](https://pro.ant.design). And welcome any feedback in our [github](https://github.com/ant-design/ant-design-pro).

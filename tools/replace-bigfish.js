@@ -4,6 +4,7 @@ const replace = require('replace-in-file');
 const replaceMap = {
   '@alipay/bigfish/antd': 'antd',
   '@alipay/bigfish/react': 'react',
+  '@alipay/bigfish/react-dom':'react-dom',
   '@alipay/bigfish/hooks': 'ahooks',
   '@alipay/bigfish/util/': '',
   '@ali/stand-admin': 'stand-admin-antdpro',

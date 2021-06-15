@@ -5,7 +5,7 @@ import type { RequestConfig, RunTimeLayoutConfig } from 'umi';
 import { history, Link } from 'umi';
 import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
-import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
+// import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 
 import 'moment/locale/zh-cn';
@@ -41,13 +41,22 @@ export async function getInitialState(): Promise<{
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
   const fetchUserInfo = async () => {
-    try {
-      const currentUser = await queryCurrentUser();
-      return currentUser;
-    } catch (error) {
-      history.push(loginPath);
-    }
-    return undefined;
+    // just hack
+
+    return {
+      name: 'DemoUser',
+      avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+      userid: '00000001',
+      email: 'antdesign@alipay.com',
+    };
+
+    // try {
+    //   const currentUser = await queryCurrentUser();
+    //   return currentUser;
+    // } catch (error) {
+    //   history.push(loginPath);
+    // }
+    // return undefined;
   };
   // 如果是登录页面，不执行
   if (history.location.pathname !== loginPath) {

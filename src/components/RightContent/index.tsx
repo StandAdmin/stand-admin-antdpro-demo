@@ -5,6 +5,7 @@ import { useModel } from 'umi';
 import Avatar from './AvatarDropdown';
 import HeaderSearch from '../HeaderSearch';
 import styles from './index.less';
+
 export type SiderTheme = 'light' | 'dark';
 
 const GlobalHeaderRight: React.FC = () => {
@@ -50,7 +51,7 @@ const GlobalHeaderRight: React.FC = () => {
       />
       <a
         target="_blank"
-        href="  https://github.com/rooseve/stand-admin-antdpro/tree/main/docs"
+        href="  https://github.com/StandAdmin/stand-admin-antdpro/tree/main/docs"
         rel="noopener noreferrer"
         className={styles.action}
       >
@@ -59,7 +60,7 @@ const GlobalHeaderRight: React.FC = () => {
 
       <a
         target="_blank"
-        href="https://github.com/rooseve/stand-admin-antdpro-demo/tree/main/src/pages/Demos"
+        href="https://github.com/StandAdmin/stand-admin-antdpro-demo/tree/main/src/pages/Demos"
         rel="noopener noreferrer"
         className={styles.action}
       >

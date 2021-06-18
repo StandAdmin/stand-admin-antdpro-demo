@@ -55,7 +55,7 @@ export default (props) => {
           ReactDOM.createPortal(
             <>
               <a
-                href={`https://github.com/rooseve/stand-admin-antdpro-demo/tree/main/src/pages/${matchConfigItem.component}`}
+                href={`https://github.com/StandAdmin/stand-admin-antdpro-demo/tree/main/src/pages/${matchConfigItem.component}`}
                 target="_blank"
               >
                 <GitlabOutlined /> 查看代码

@@ -51,7 +51,7 @@ const GlobalHeaderRight: React.FC = () => {
       />
       <a
         target="_blank"
-        href="  https://github.com/StandAdmin/stand-admin-antdpro/tree/main/docs"
+        href="  https://standadmin.github.io/stand-admin-antdpro/"
         rel="noopener noreferrer"
         className={styles.action}
       >

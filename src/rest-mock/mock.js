@@ -1,7 +1,7 @@
 const listRecords = [];
 
 function matchRecord(record, fld, val) {
-  if (!val) {
+  if (!val && val !== 0) {
     return true;
   }
 

@@ -57,4 +57,8 @@ export default defineConfig({
       projectName: 'swagger',
     },
   ],
+  nodeModulesTransform: { type: 'none' },
+  // mfsu: {},
+  webpack5: {},
+  // exportStatic: {},
 });

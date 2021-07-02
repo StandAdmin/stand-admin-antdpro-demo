@@ -1,6 +1,6 @@
 {
   "name": "ant-design-pro",
-  "version": "5.0.0-beta.3",
+  "version": "5.0.0",
   "private": true,
   "description": "An out-of-box UI solution for enterprise applications",
   "scripts": {
@@ -16,11 +16,12 @@
     "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && npm run lint:style",
     "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
-    "lint:prettier": "prettier --check \"src/**/*\" --end-of-line auto",
+    "lint:prettier": "prettier -c --write \"src/**/*\" --end-of-line auto",
     "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
     "openapi": "umi openapi",
     "precommit": "lint-staged",
     "prettier": "prettier -c --write \"src/**/*\"",
+    "site": "npm run fetch:blocks && npm run build",
     "start": "cross-env UMI_ENV=dev umi dev",
     "start:dev": "cross-env REACT_APP_ENV=dev MOCK=none UMI_ENV=dev umi dev",
     "start:no-mock": "cross-env MOCK=none UMI_ENV=dev umi dev",
@@ -31,6 +32,7 @@
     "test": "umi test",
     "test:all": "node ./tests/run-tests.js",
     "test:component": "umi test ./src/components",
+    "serve": "umi-serve",
     "tsc": "tsc --noEmit"
   },
   "lint-staged": {
@@ -64,7 +66,8 @@
     "react-dom": "^17.0.0",
     "react-helmet-async": "^1.0.4",
     "stand-admin-antdpro": "^1.0.9",
-    "umi": "^v3.4.0"
+    "umi": "^3.5.0",
+    "umi-serve": "^1.9.10"
   },
   "devDependencies": {
     "@ant-design/pro-cli": "^2.0.2",
@@ -96,7 +99,7 @@
     "jsdom-global": "^3.0.2",
     "lint-staged": "^10.0.0",
     "mockjs": "^1.0.1-beta3",
-    "prettier": "^2.0.1",
+    "prettier": "^2.3.2",
     "puppeteer-core": "^8.0.0",
     "replace-in-file": "^6.2.0",
     "stylelint": "^13.0.0",
@@ -104,6 +107,35 @@
   },
   "engines": {
     "node": ">=10.0.0"
+  },
+  "create-umi": {
+    "ignoreScript": [
+      "docker*",
+      "functions*",
+      "site",
+      "generateMock"
+    ],
+    "ignoreDependencies": [
+      "netlify*",
+      "serverless"
+    ],
+    "ignore": [
+      ".dockerignore",
+      ".git",
+      ".github",
+      ".gitpod.yml",
+      "CODE_OF_CONDUCT.md",
+      "Dockerfile",
+      "Dockerfile.*",
+      "lambda",
+      "LICENSE",
+      "netlify.toml",
+      "README.*.md",
+      "azure-pipelines.yml",
+      "docker",
+      "CNAME",
+      "create-umi"
+    ]
   },
   "gitHooks": {
     "commit-msg": "fabric verify-commit"

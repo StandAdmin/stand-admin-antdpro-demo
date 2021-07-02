@@ -1,14 +1,15 @@
 {
   "/umi.css": "/umi.css",
   "/umi.js": "/umi.js",
-  "/external_antd_charts.js": "/external_antd_charts.js",
-  "/antd_pro_table.css": "/antd_pro_table.chunk.css",
-  "/antd_pro_table.js": "/antd_pro_table.js",
-  "/icons/icon-512x512.png": "/icons/icon-512x512.png",
+  "/vendors~antd_pro_table.css": "/vendors~antd_pro_table.chunk.css",
+  "/vendors~antd_pro_table.js": "/vendors~antd_pro_table.js",
+  "/vendors~external_antd_charts.js": "/vendors~external_antd_charts.js",
+  "/CNAME": "/CNAME",
   "/favicon.ico": "/favicon.ico",
-  "/logo.svg": "/logo.svg",
-  "/icons/icon-192x192.png": "/icons/icon-192x192.png",
   "/icons/icon-128x128.png": "/icons/icon-128x128.png",
-  "/pro_icon.svg": "/pro_icon.svg",
-  "/CNAME": "/CNAME"
+  "/icons/icon-192x192.png": "/icons/icon-192x192.png",
+  "/icons/icon-512x512.png": "/icons/icon-512x512.png",
+  "/index.html": "/index.html",
+  "/logo.svg": "/logo.svg",
+  "/pro_icon.svg": "/pro_icon.svg"
 }

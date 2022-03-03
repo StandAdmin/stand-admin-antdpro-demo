@@ -21,7 +21,6 @@ export default () => {
           specSearchParams={{
             status: 1,
           }}
-          maxCheckedLength={3}
           resetSearchParamsOnModalShow
           // modalTrigger={({ showModal }) => {
           //   return <a onClick={showModal}>xxx</a>;
@@ -30,7 +29,7 @@ export default () => {
         />
       </Card>
 
-      <Card title="ID模式">
+      <Card title="ID模式(限选3个)">
         <BaseDemoSelectCtrl.IdSelectCtrl
           specSearchParams={{
             status: 1,
